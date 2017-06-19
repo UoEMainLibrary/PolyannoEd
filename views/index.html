@@ -1,0 +1,130 @@
+<!doctype html>
+
+<html>
+
+
+<head>
+
+<!-- Meta data -->
+
+	<meta charset="utf-8">
+
+<!-- Stylesheets -->
+
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+
+	<link rel="stylesheet" type="text/css" href="stylesheets/style.css" />
+
+<!-- Javascript libraries -->
+
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+	<script src="http://airbnb.io/infinity/build/infinity.min.js"></script>
+
+</head>
+
+
+
+<body>
+
+<!--The Page Content-->
+<div data-role="main" class="ui-content">
+<div id="main page" class="container polyanno-page-body">
+
+	<div class="row ">
+
+		<div class="col-md-2">
+
+			<div class="row ed-poly-header-obj">
+
+	        	<a href="/" class="ed-poly-header-obj">
+	        		<object class="polyanno-logo-menu-icon" data="stylesheets/images/AnnoSVGHTML.svg" type="image/svg+xml"></object>
+	        	</a>
+
+				<div class="dropdown ed-poly-header-obj">
+
+				  <button class="btn polyanno-dropdown-menu polyanno-dropdown-menu-left dropdown-toggle" type="button" id="poly-ed-title-menu" onclick="if ($('.polyanno-dropdown-menu-items-left').css('display')=='none') { $('.polyanno-dropdown-menu-items-left').css('display','block'); } else { $('.polyanno-dropdown-menu-items-left').css('display','none'); } " >
+				    
+				    <span class="caret"></span>
+
+				  </button>
+				  
+				</div>
+
+				<div class="polyanno-user-menu-item-obj polyanno-dropdown-menu-items-left">
+					<a class="polyanno-user-menu-item"  href="/aboutus">About Us</a>
+				</div>
+
+				<div class="dropdown polyanno-user-menu-item-obj polyanno-dropdown-menu-items-left">
+				  	<button class="btn polyanno-dropdown-menu polyanno-dropdown-menu-left dropdown-toggle" type="button" id="poly-ed-filters-menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+				    	Filters
+				    	<span class="caret"></span>
+				  	</button>
+				  	<ul class="dropdown-menu form-group filter-form" aria-labelledby="poly-ed-filters-menu">
+					    <li class="filter">
+							<input type="search" placeholder="Search Images" class="poly-ed-search "><button class="poly-ed-search-submit"><span> Search </span></button>
+						</li>
+					    <li class="filter">
+							<p>Dates</p>
+							<span>From  </span><input class="poly-ed-startYear" type="number"><span> To </span><input class="poly-ed-endYear" type="number" max="2016" >
+						</li>
+					    <li class="filter">
+					    	<span>Languages  </span> <span> <input type="text" class="poly-ed-languages-filter"></span>
+						</li>
+					    <li class="filter">
+		    				<span>Transcription Difficulty  </span>
+							<span><div class="form-group">
+							  <select class="form-control" id="poly-ed-TranscriptionDifficulty">
+							    <option>Easy</option>
+							    <option>Medium</option>
+							    <option>Difficult</option>
+							  </select>
+							</div></span>
+						</li>
+						<li class="filter">
+							<span>Translation Difficulty</span>
+							<span><div class="form-group">
+							  <select class="form-control" id="poly-ed-TranslationDifficulty">
+							    <option>Easy</option>
+							    <option>Medium</option>
+							    <option>Difficult</option>
+							  </select>
+							</div></span>
+						</li>
+				  	</ul>
+				</div>
+			</div>
+			
+		</div>
+
+		<div class="col-md-8" id="poly-ed-scroll">
+
+		</div>
+
+		<div class="col-md-2">
+
+			<div class="row ed-poly-header-obj ed-poly-users-tab">
+
+				<button class="btn btn default polyanno-dropdown-menu polyanno-dropdown-menu-right">
+					<span>Login</span>
+				</button>
+
+			</div>
+		</div>
+
+	</div>
+
+</div>
+
+</div>
+
+<script src="javascripts/polyedsearchpage.js"></script>
+
+<script src="javascripts/theCollectionArray.js"></script>
+
+<script src="javascripts/scrolling.js"></script>
+
+</body>
+
+</html>

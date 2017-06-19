@@ -1,0 +1,24 @@
+{
+  "name": "polyglot",
+  "version": "0.0.1",
+  "description": "A responsive UI to transcribe and translate images",
+  "directories": {
+    "examples": "./examples"
+  },
+  "author": "Erin Nolan",
+  "license": "MIT",
+  "readmeFilename": "README.md",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BluePigeons/Polyglot"
+  },
+  "dependencies": {
+    "cookie-parser": "^1.4.3",
+    "express": "4.14.0",
+    "mongoose": "~4.1.0",
+    "bluebird": "latest",
+    "body-parser": "~1.0.1",
+    "cors": "~2.7.1",
+    "polyanno_storage": "latest"
+  }
+}

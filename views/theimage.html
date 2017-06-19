@@ -1,0 +1,296 @@
+<!doctype html>
+
+<html>
+
+<head>
+
+<!-- Meta data -->
+
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+<!-- Stylesheets -->
+
+	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
+
+    <link rel="stylesheet" type="text/css" href="stylesheets/leaflet.toolbar.css" />
+
+	<link rel="stylesheet" type="text/css" href="https://rawgit.com/Leaflet/Leaflet.draw/master/src/leaflet.draw.css" />
+
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+
+	<link rel="stylesheet" type="text/css" href="https://rawgit.com/BluePigeons/dragon_drop/master/dragondrop.css" />
+	<link rel="stylesheet" type="text/css" href="https://rawgit.com/BluePigeons/alltheunicode/master/alltheunicode.css" />
+
+	<link rel="stylesheet" type="text/css" href="https://rawgit.com/UoEMainLibrary/polyanno/master/polyanno.css" />
+	<link rel="stylesheet" type="text/css" href="stylesheets/style.css" />
+
+<!-- Javascript libraries -->
+
+    <!-- Maybe add something in to ensure these are updated as the IIIF may be updated more frequently than normal libraries? -->
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+	<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
+	<script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
+    <script src="https://rawgit.com/mejackreed/Leaflet-IIIF/master/leaflet-iiif.js"></script>
+
+    <script src="javascripts/leaflet.toolbar-src.js"></script>
+    <!--<script src="javascripts/Toolbar.Control.js"></script>-->
+
+    <script src="https://rawgit.com/Leaflet/Leaflet.draw/master/src/Leaflet.draw.js"></script>
+    <script src="https://rawgit.com/Leaflet/Leaflet.draw/master/src/Leaflet.Draw.Event.js"></script>
+
+    <script src="https://rawgit.com/Leaflet/Leaflet.draw/master/src/edit/handler/Edit.Poly.js"></script>
+    <script src="https://rawgit.com/Leaflet/Leaflet.draw/master/src/edit/handler/Edit.SimpleShape.js"></script>
+    <script src="https://rawgit.com/Leaflet/Leaflet.draw/master/src/edit/handler/Edit.Circle.js"></script>
+    <script src="https://rawgit.com/Leaflet/Leaflet.draw/master/src/edit/handler/Edit.Rectangle.js"></script>
+    <script src="https://rawgit.com/Leaflet/Leaflet.draw/master/src/edit/handler/Edit.Marker.js"></script>
+
+    <script src="https://rawgit.com/Leaflet/Leaflet.draw/master/src/draw/handler/Draw.Feature.js"></script>
+    <script src="https://rawgit.com/Leaflet/Leaflet.draw/master/src/draw/handler/Draw.Polyline.js"></script>
+    <script src="https://rawgit.com/Leaflet/Leaflet.draw/master/src/draw/handler/Draw.Polygon.js"></script>
+    <script src="https://rawgit.com/Leaflet/Leaflet.draw/master/src/draw/handler/Draw.SimpleShape.js"></script>
+    <script src="https://rawgit.com/Leaflet/Leaflet.draw/master/src/draw/handler/Draw.Rectangle.js"></script>
+    <script src="https://rawgit.com/Leaflet/Leaflet.draw/master/src/draw/handler/Draw.Circle.js"></script>
+    <script src="https://rawgit.com/Leaflet/Leaflet.draw/master/src/draw/handler/Draw.Marker.js"></script>
+
+    <script src="https://rawgit.com/Leaflet/Leaflet.draw/master/src/ext/TouchEvents.js"></script>
+    <script src="https://rawgit.com/Leaflet/Leaflet.draw/master/src/ext/LatLngUtil.js"></script>
+    <script src="https://rawgit.com/Leaflet/Leaflet.draw/master/src/ext/GeometryUtil.js"></script>
+    <script src="https://rawgit.com/Leaflet/Leaflet.draw/master/src/ext/LineUtil.Intersect.js"></script>
+    <script src="https://rawgit.com/Leaflet/Leaflet.draw/master/src/ext/Polyline.Intersect.js"></script>
+    <script src="https://rawgit.com/Leaflet/Leaflet.draw/master/src/ext/Polygon.Intersect.js"></script>
+
+    <script src="https://rawgit.com/Leaflet/Leaflet.draw/master/src/Control.Draw.js"></script>
+    <script src="https://rawgit.com/Leaflet/Leaflet.draw/master/src/Tooltip.js"></script>
+    <script src="https://rawgit.com/Leaflet/Leaflet.draw/master/src/Toolbar.js"></script>
+
+    <script src="https://rawgit.com/Leaflet/Leaflet.draw/master/src/draw/DrawToolbar.js"></script>
+    <script src="https://rawgit.com/Leaflet/Leaflet.draw/master/src/edit/EditToolbar.js"></script>
+    <script src="https://rawgit.com/Leaflet/Leaflet.draw/master/src/edit/handler/EditToolbar.Edit.js"></script>
+    <script src="https://rawgit.com/Leaflet/Leaflet.draw/master/src/edit/handler/EditToolbar.Delete.js"></script>
+
+
+<!--
+	<script> window.hypothesisConfig = function () { return {showHighlights: false}; };</script>
+	<script type="application/json" class="js-hypothesis-config">
+	  {
+	    "openLoginForm": true
+	  }
+	</script>
+	<script async defer src="https://hypothes.is/embed.js"></script>
+	<script src="javascripts/TextQuoteAnchor.js"></script>
+
+-->
+
+</head>
+
+
+
+<body>
+
+<!--The Page Content-->
+<div data-role="main" class="ui-content">
+<div id="main page" class="container polyanno-page-body">
+
+<div class="row ed-poly-page-top align-items-start">
+
+	<div class="col-md-2">
+
+		<div class=" row ed-poly-header-obj">
+
+			<div class="ed-poly-header-obj">
+
+			  <button class="btn polyanno-dropdown-menu polyanno-dropdown-menu-left dropdown-toggle" type="button" id="poly-ed-title-menu" onclick="if ($('.polyanno-dropdown-menu-items-left').css('display')=='none') { $('.polyanno-dropdown-menu-items-left').css('display','block'); } else { $('.polyanno-dropdown-menu-items-left').css('display','none'); } " >
+
+	        	<object class="polyanno-logo-menu-icon" data="stylesheets/images/AnnoSVGHTML.svg" type="image/svg+xml"></object>
+			    
+			    <span class="caret"></span>
+
+			  </button>
+			  
+			</div>
+
+			<div class="polyanno-menu-item-obj-list polyanno-dropdown-menu-items-left">
+
+				<div class="polyanno-user-menu-item-obj polyanno-dropdown-menu-items-left">
+					<a class="polyanno-user-menu-item"  href="/">
+						<button class="btn polyanno-dropdown-menu polyanno-dropdown-menu-left" type="button">
+					    	Home
+					  	</button>
+				  	</a>
+				</div>
+
+				<div class="polyanno-user-menu-item-obj polyanno-dropdown-menu-items-left">
+					<a class="polyanno-user-menu-item"  href="/aboutus">
+						<button class="btn polyanno-dropdown-menu polyanno-dropdown-menu-left" type="button">
+					    	About Us
+					  	</button>
+					</a>
+				</div>
+
+				<div class="dropdown polyanno-user-menu-item-obj polyanno-dropdown-menu-items-left">
+				  	<button class="btn polyanno-dropdown-menu polyanno-dropdown-menu-left dropdown-toggle" type="button" id="poly-ed-filters-menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+				    	Filters
+				    	<span class="caret"></span>
+				  	</button>
+				  	<ul class="dropdown-menu form-group filter-form" aria-labelledby="poly-ed-filters-menu">
+					    <li class="filter">
+							<input type="search" placeholder="Search Images" class="poly-ed-search "><button class="poly-ed-search-submit"><span> Search </span></button>
+						</li>
+					    <li class="filter">
+							<p>Dates</p>
+							<span>From  </span><input class="poly-ed-startYear" type="number"><span> To </span><input class="poly-ed-endYear" type="number" max="2016" >
+						</li>
+					    <li class="filter">
+					    	<span>Languages  </span> <span> <input type="text" class="poly-ed-languages-filter"></span>
+						</li>
+					    <li class="filter">
+		    				<span>Transcription Difficulty  </span>
+							<span><div class="form-group">
+							  <select class="form-control" id="poly-ed-TranscriptionDifficulty">
+							    <option>Easy</option>
+							    <option>Medium</option>
+							    <option>Difficult</option>
+							  </select>
+							</div></span>
+						</li>
+						<li class="filter">
+							<span>Translation Difficulty</span>
+							<span><div class="form-group">
+							  <select class="form-control" id="poly-ed-TranslationDifficulty">
+							    <option>Easy</option>
+							    <option>Medium</option>
+							    <option>Difficult</option>
+							  </select>
+							</div></span>
+						</li>
+				  	</ul>
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+
+	<div class="col-md-4" >
+		
+		<a class="btn poly-ed-editors-prev poly-ed-editors-change">
+			<button class="btn poly-ed-editors-change">
+				<span class="glyphicon glyphicon-chevron-up"></span>
+			</button>
+		</a>
+
+	</div>
+
+
+	<div class="col-md-4" >
+		
+		<a class="btn poly-ed-editors-next poly-ed-editors-change">
+			<button class="btn poly-ed-editors-change">
+				<span class="glyphicon glyphicon-chevron-down"></span>
+			</button>
+		</a>
+
+	</div>
+
+	<div class="col-md-2">
+
+		<div class="row ed-poly-header-obj ed-poly-users-tab">
+
+			<button class="btn btn default polyanno-dropdown-menu polyanno-dropdown-menu-right">
+				<span>Login</span>
+			</button>
+
+		</div>
+
+	</div>
+</div>
+
+<div class="row" id="polyanno-top-bar">
+	<div class="col-md-6 polyanno-bar-buttons">
+	<div class="row">
+		<div class="btn-group polyanno-language-buttons" role="group" aria-label="...">
+			<button class="btn btn-default polyanno-add-keyboard" type="button">
+				<span class="glyphicon glyphicon-plus"></span>
+				<span class="glyphicon glyphicon-th"></span><span class="glyphicon glyphicon-th"></span>
+			</button> <!--add keyboard characters-->
+			<button class="btn btn-default polyanno-add-ime polyanno-IME-options-closed" type="button">
+				<span class="glyphicon glyphicon-transfer"></span>
+				<span class="glyphicon glyphicon-th"></span><span class="glyphicon glyphicon-th"></span>
+			</button> <!--add IME options-->
+		</div>
+		<div class="polyanno-enable-IME"></div>
+  	</div>
+  	</div>
+
+  	<div class="col-md-6 dragondrop-min-bar">
+
+  	</div>
+
+</div>
+
+<div class="row atu-keyboard-parent align-items-center justify-content-center" id="polyanno-page-body">
+
+	<!-- Image Viewer Panel -->
+
+	<!-- Editor Boxes go here -->
+
+</div>
+
+<div class="row poly-ed-below-bar footer-policies align-items-end">
+
+        <div class="col-md-1">
+        	<span>
+	        	<a href="http://collections.ed.ac.uk/ " title="University Collections Home">UC</a>
+        	</span>
+        </div>
+
+        <div class="col-md-1">
+        	<span>
+	        	<a href="http://www.ed.ac.uk/schools-departments/information-services/about/organisation/library-and-collections" title="Library &amp; University Collections Home">L &amp; UC</a>
+        	</span>
+        </div>
+
+        <div class="col-md-1">
+        	<span></span>>
+	        	<a href="http://www.is.ed.ac.uk" title="University of Edinburgh Information Services Home">IS</a>
+        	</span>
+        </div>
+
+        <div class="col-md-5">
+            <span><a href="http://www.ed.ac.uk/about/website/privacy" title="Privacy and Cookies Link" target="_blank">Privacy &amp; Cookies</a>
+                &nbsp;&nbsp;<a href="http://collections.ed.ac.uk/takedown" title="Takedown Policy Link">Takedown Policy</a>
+                &nbsp;&nbsp;<a href="http://collections.ed.ac.uk/licensing" title="Licensing and Copyright Link">Licensing &amp; Copyright</a>
+                &nbsp;&nbsp;<a href="http://www.ed.ac.uk/about/website/accessibility" title="Website Accessibility Link" target="_blank">Accessibility</a>
+            </span>
+        </div>
+
+        <div class="col-md-4">
+        	<span>Unless explicitly stated otherwise, all material is copyright ©2015  
+        	<a href="http://www.ed.ac.uk" title="University of Edinburgh Home">University of Edinburgh</a>.</span>
+        </div>
+
+</div>
+
+</div>
+
+<!-- The Javascript apps for every page-->
+<!--<script id="udata" src="javascripts/udata.js"></script>-->
+<script src="https://rawgit.com/BluePigeons/dragon_drop/master/dragondrop.js"></script>
+<script src="https://rawgit.com/BluePigeons/alltheunicode/master/alltheunicode.js"></script>
+<script src="javascripts/polyedsearchpage.js"></script>
+<script src="javascripts/theCollectionArray.js"></script>
+<script src="https://rawgit.com/UoEMainLibrary/polyanno/master/polyanno.js"></script>
+<script src="javascripts/app.js"></script>
+
+</body>
+
+</html>
