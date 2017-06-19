@@ -2,12 +2,12 @@
 
 This is a project aiming to enable to crowdsourced transcription and translation of the awesome collections at the University of Edinburgh. Maybe gamifying if I get time. This has the University of Edinburgh specific website but individual components developed during this project are being released as separate packages to make it more accessible for others to reuse the code.
 
-##Getting Started
+## Getting Started
 
 The project is written using Node.js and Express to build the framework and as a package.json is defined, you should be able to simply clone this repo and use NPM to install dependencies.
 
 ```
-$ git clone "https://github.com/BluePigeons/Polyglot.git" 
+$ git clone "https://github.com/UoEMainLibrary/PolyannoEd.git" 
 ```
 
 ```
@@ -25,7 +25,7 @@ $ npm start
 ```
 
 
-##Front End Development
+## Front End Development
 
 **Editing Pages**
 
