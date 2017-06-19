@@ -101,7 +101,7 @@ userRouter.put('/:username', polyanno.users.updateOne)
 
 /// //////GET STARTED
 
-app.use('/api', polyanno.router)
+// app.use('/api', polyanno.router)
 app.use('/editors', editorRouter)
 app.use('/user', userRouter)
 
