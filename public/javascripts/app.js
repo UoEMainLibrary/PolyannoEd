@@ -11,8 +11,8 @@ var loadImage = function () {
     imageSelected = theCookieImage
   };
   var theImage = getTargetJSON(imageSelected)
-  imageSelectedFormats = theImage.formats
-  imageSelectedMetadata = theImage.metadata
+  // imageSelectedFormats = theImage.formats
+  // imageSelectedMetadata = theImage.metadata
 }
 
 loadImage()
