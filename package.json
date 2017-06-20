@@ -13,8 +13,8 @@
     "url": "https://github.com/UoEMainLibrary/PolyannoEd.git"
   },
   "scripts": {
-    "start": "node ./start.js",
-    "watch": "nodemon ./start.js --ignore public/",
+    "start": "node ./server.js",
+    "watch": "nodemon ./server.js --ignore public/",
     "dev": "concurrently 'npm run watch'"
   },
   "dependencies": {
