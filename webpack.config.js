@@ -12,26 +12,12 @@ const javascript = {
   }]
 }
 
-// postcss loader
-const postcss = {
-  loader: 'postcss-loader',
-  options: {
-    plugins () { return [autoprefixer({ browsers: 'last 3 versions' })] }
-  }
-}
-
-// Handle files that are require('something.scss')
-const styles = {
-  test: /\.(scss)$/,
-  use: ExtractTextPlugin.extract(['css-loader?sourceMap', postcss, 'sass-loader?sourceMap'])
-}
-
 // plugin for compressing js files
 const uglify = new webpack.optimize.UglifyJsPlugin({ // eslint-disable-line
   compress: { warnings: false }
 })
 
-// put the resources into single point of entry
+// put the assets into single point of entry
 const config = {
   entry: {
     App: './public/javascripts/polyannoed.js'
@@ -43,12 +29,12 @@ const config = {
   },
 
   module: {
-    rules: [javascript, styles]
+    rules: [javascript]
   },
   // finally we pass it an array of our plugins - uncomment if you want to uglify
   // plugins: [uglify]
   plugins: [
-    new ExtractTextPlugin('style.css')
+    // new ExtractTextPlugin('style.css')
   ]
 }
 
