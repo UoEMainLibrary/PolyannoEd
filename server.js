@@ -16,11 +16,15 @@ var polyanno = require('polyanno_storage')
 // import environment variables
 require('dotenv').config({ path: 'variables.env' })
 
-var thisWebsitePort = 7777
-
 // GET APPLICATION RUNNING
 
 var app = express()
+
+// start the app
+app.set('port', process.env.PORT || 8888)
+const server = app.listen(app.get('port'), () => {
+  console.log(`Express is running on PORT ${server.address().port}`)
+})
 
 /// /BASIC APP ROUTES & SETUP
 
@@ -111,6 +115,3 @@ app.use('/user', userRouter)
 app.use(function (req, res, next) {
   res.status(404).redirect('/404page.html')
 })
-
-// tells the server where it should be listening for req and res
-app.listen(thisWebsitePort)
