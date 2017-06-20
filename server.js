@@ -38,13 +38,13 @@ const server = app.listen(app.get('port'), () => {
 // set the view engine
 app.set('view engine', 'ejs')
 app.engine('html', require('ejs').renderFile)
+app.use(express.static(path.join(__dirname, '/views')))
 
 /// /BASIC APP ROUTES & SETUP
 const router = require('./routes/index')
 app.use('/', router)
 
 app.use(express.static(path.join(__dirname, '/public')))
-app.use(express.static(path.join(__dirname, '/views')))
 app.use(express.static(path.join(__dirname, '/examples')))
 
 app.use(cors())
