@@ -5,6 +5,8 @@ var cookieParser = require('cookie-parser')
 var cors = require('cors')
 
 const path = require('path')
+const promisify = require('es6-promisify')
+const flash = require('connect-flash')
 
 // import environment variables
 require('dotenv').config({ path: 'variables.env' })
@@ -50,4 +52,22 @@ app.use(cookieParser())
 
 app.use(function (req, res, next) {
   res.status(404).redirect('/404page.html')
+})
+
+// // The flash middleware let's us use req.flash('error', 'Shit!'), which will then pass that message to the next page the user requests
+app.use(flash())
+
+// pass variables to our templates + all requests
+app.use((req, res, next) => {
+  res.locals.h = helpers
+  res.locals.flashes = req.flash()
+  res.locals.user = req.user || null
+  res.locals.currentPath = req.path
+  next()
+})
+
+// promisify some callback based APIs
+app.use((req, res, next) => {
+  req.login = promisify(req.login, req)
+  next()
 })
