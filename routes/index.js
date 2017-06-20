@@ -4,7 +4,7 @@ const router = express.Router()
 const editorController = require('../controller/editorController')
 
 router.get('/', (req, res) => {
-  res.render('index.html')
+  res.render('layout')
 })
 
 router.get('/beginnertutorial', function (req, res) {

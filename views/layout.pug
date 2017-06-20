@@ -1,0 +1,71 @@
+doctype html
+html
+  head
+    // Meta data
+    meta(charset='utf-8')
+    // Stylesheets
+    link(rel='stylesheet', href='//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css')
+    link(rel='stylesheet', href='//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css')
+    link(rel='stylesheet', type='text/css', href='stylesheets/style.css')
+    // Javascript libraries
+    script(src='//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
+    script(src='//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js')
+    script(src='http://airbnb.io/infinity/build/infinity.min.js')
+  body
+    // The Page Content
+    .ui-content(data-role='main')
+      .container.polyanno-page-body(id='main page')
+        .row
+          .col-md-2
+            .row.ed-poly-header-obj
+              a.ed-poly-header-obj(href='/')
+                object.polyanno-logo-menu-icon(data='stylesheets/images/AnnoSVGHTML.svg', type='image/svg+xml')
+              .dropdown.ed-poly-header-obj
+                button#poly-ed-title-menu.btn.polyanno-dropdown-menu.polyanno-dropdown-menu-left.dropdown-toggle(type='button', onclick="if ($('.polyanno-dropdown-menu-items-left').css('display')=='none') { $('.polyanno-dropdown-menu-items-left').css('display','block'); } else { $('.polyanno-dropdown-menu-items-left').css('display','none'); } ")
+                  span.caret
+              .polyanno-user-menu-item-obj.polyanno-dropdown-menu-items-left
+                a.polyanno-user-menu-item(href='/aboutus') About Us
+              .dropdown.polyanno-user-menu-item-obj.polyanno-dropdown-menu-items-left
+                button#poly-ed-filters-menu.btn.polyanno-dropdown-menu.polyanno-dropdown-menu-left.dropdown-toggle(type='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='true')
+                  | Filters
+                  span.caret
+                ul.dropdown-menu.form-group.filter-form(aria-labelledby='poly-ed-filters-menu')
+                  li.filter
+                    input.poly-ed-search(type='search', placeholder='Search Images')
+                    button.poly-ed-search-submit
+                      span  Search 
+                  li.filter
+                    p Dates
+                    span From  
+                    input.poly-ed-startYear(type='number')
+                    span  To 
+                    input.poly-ed-endYear(type='number', max='2016')
+                  li.filter
+                    span Languages  
+                    span
+                      input.poly-ed-languages-filter(type='text')
+                  li.filter
+                    span Transcription Difficulty  
+                    span
+                      .form-group
+                        select#poly-ed-TranscriptionDifficulty.form-control
+                          option Easy
+                          option Medium
+                          option Difficult
+                  li.filter
+                    span Translation Difficulty
+                    span
+                      .form-group
+                        select#poly-ed-TranslationDifficulty.form-control
+                          option Easy
+                          option Medium
+                          option Difficult
+          #poly-ed-scroll.col-md-8
+          .col-md-2
+            .row.ed-poly-header-obj.ed-poly-users-tab
+              button.btn.btn.default.polyanno-dropdown-menu.polyanno-dropdown-menu-right
+                span Login
+    script(src='javascripts/polyedsearchpage.js')
+    script(src='javascripts/theCollectionArray.js')
+    script(src='javascripts/scrolling.js')
+
