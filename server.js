@@ -58,6 +58,7 @@ app.use(function (req, res, next) {
 app.use(flash())
 
 // pass variables to our templates + all requests
+const helpers = require('./helpers')
 app.use((req, res, next) => {
   res.locals.h = helpers
   res.locals.flashes = req.flash()
