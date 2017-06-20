@@ -48,18 +48,6 @@ app.use(bodyParser.json())
 // set the cookie parser
 app.use(cookieParser())
 
-app.get('/beginnertutorial', function (req, res) {
-  res.redirect('/beginnertutorial.html')
-})
-
-app.get('/aboutus', function (req, res) {
-  res.redirect('/aboutus.html')
-})
-
-// Editor router
-const editorRouter = require('./routes/editorRouter')
-app.use('/editors', editorRouter)
-
 app.use(function (req, res, next) {
   res.status(404).redirect('/404page.html')
 })
