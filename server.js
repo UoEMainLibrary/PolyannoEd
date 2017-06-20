@@ -28,8 +28,7 @@ const server = app.listen(app.get('port'), () => {
 })
 
 // set the view engine
-app.set('view engine', 'ejs')
-app.engine('html', require('ejs').renderFile)
+app.set('view engine', 'pug')
 app.use(express.static(path.join(__dirname, '/views')))
 
 // set the static files
