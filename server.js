@@ -34,14 +34,12 @@ const server = app.listen(app.get('port'), () => {
 })
 
 /// /BASIC APP ROUTES & SETUP
+const router = require('./routes/index')
+app.use('/')
 
 app.use(express.static(__dirname + '/public'))
 app.use(express.static(__dirname + '/views'))
 app.use(express.static(__dirname + '/examples'))
-
-app.get('/', function (req, res) {
-  res.sendFile(__dirname + '/index.html')
-})
 
 app.use(cors())
 // Currently using cors for all origins just for development but will need to be specific for actual deployment
