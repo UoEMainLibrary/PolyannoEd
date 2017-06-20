@@ -45,8 +45,6 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 app.use(cookieParser())
 
-var port = process.env.PORT || thisWebsitePort
-
 /// ///MIDDLEWARE
 
 var editorRouter = express.Router()
