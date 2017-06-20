@@ -28,13 +28,13 @@
     "express": "^4.15.3",
     "mongoose": "^4.10.7",
     "path": "^0.12.7",
-    "polyanno_storage": "^0.1.5",
-    "webpack": "^3.0.0"
+    "polyanno_storage": "^0.1.5"
   },
   "devDependencies": {
     "concurrently": "^3.4.0",
     "eslint-plugin-html": "^3.0.0",
     "nodemon": "^1.11.0",
-    "standard": "^10.0.2"
+    "standard": "^10.0.2",
+    "webpack": "^3.0.0"
   }
 }
