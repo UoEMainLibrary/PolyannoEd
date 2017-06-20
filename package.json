@@ -2,45 +2,52 @@
   "name": "polyannoed",
   "version": "0.0.1",
   "description": "A responsive UI to transcribe and translate images",
-  "directories": {
-    "examples": "./examples"
+  "main": "server.js",
+  "scripts": {
+    "watch": "nodemon ./server.js --ignore public/",
+    "assets": "webpack -w --display-max-modules 0",
+    "start": "concurrently \"npm run watch\" \"npm run assets\" --names \"💻,📦\" --prefix name"
   },
-  "author": "Erin Nolan, Indra Lukmana",
+    "author": "Erin Nolan, Indra Lukmana",
   "license": "MIT",
   "readmeFilename": "README.md",
   "repository": {
     "type": "git",
     "url": "https://github.com/UoEMainLibrary/PolyannoEd.git"
   },
-  "scripts": {
-    "watch": "nodemon ./server.js --ignore public/",
-    "assets": "webpack -w --display-max-modules 0",
-    "start": "concurrently \"npm run watch\" \"npm run assets\" --names \"💻,📦\" --prefix name"
-  },
-  "dependencies": {
-    "bluebird": "latest",
-    "body-parser": "^1.17.2",
-    "connect-flash": "^0.1.1",
-    "cookie-parser": "^1.4.3",
-    "cors": "^2.8.3",
-    "dotenv": "^4.0.0",
-    "ejs": "^2.5.6",
-    "es6-promisify": "^5.0.0",
-    "express": "^4.15.3",
-    "jade-bootstrap": "^1.0.14",
-    "mongoose": "^4.10.7",
-    "path": "^0.12.7",
-    "polyanno_storage": "^0.1.5",
-    "pug": "^2.0.0-rc.2"
-  },
   "devDependencies": {
+    "autoprefixer": "^7.1.1",
+    "babel-cli": "^6.24.1",
     "babel-core": "^6.25.0",
     "babel-loader": "^7.1.0",
+    "babel-preset-env": "^1.5.2",
     "babel-preset-es2015": "^6.24.1",
     "concurrently": "^3.4.0",
+    "css-loader": "^0.28.4",
     "eslint-plugin-html": "^3.0.0",
+    "extract-text-webpack-plugin": "^2.1.2",
+    "node-sass": "^4.5.3",
     "nodemon": "^1.11.0",
+    "postcss-loader": "^2.0.6",
+    "pug-lint": "^2.4.0",
     "standard": "^10.0.2",
     "webpack": "^3.0.0"
+  },
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "connect-flash": "^0.1.1",
+    "connect-mongo": "^1.3.2",
+    "cookie-parser": "^1.4.3",
+    "dotenv": "^4.0.0",
+    "es6-promisify": "^5.0.0",
+    "express": "^4.15.3",
+    "express-session": "^1.15.3",
+    "express-validator": "^3.2.0",
+    "jade-bootstrap": "^1.0.14",
+    "mongodb": "^2.2.28",
+    "mongoose": "^4.10.6",
+    "passport": "^0.3.2",
+    "path": "^0.12.7",
+    "pug": "^2.0.0-rc.2"
   }
 }
