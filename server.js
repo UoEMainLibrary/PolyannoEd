@@ -13,6 +13,9 @@ var polyanno = require('polyanno_storage')
 /// /have released polyanno_storage as a separate NPM package so you should be able to simply "npm install" it the same as the other packages
 /// need to set a function to (re)define those variables here within this package rather than just recalling what is defined in the node_modules package...
 
+// import environment variables
+require('dotenv').config({ path: 'variables.env' })
+
 var thisWebsitePort = 7777
 
 // GET APPLICATION RUNNING
