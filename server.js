@@ -10,6 +10,8 @@ var cors = require('cors')
 
 var polyanno = require('polyanno_storage')
 
+const path = require('path')
+
 /// /have released polyanno_storage as a separate NPM package so you should be able to simply "npm install" it the same as the other packages
 /// need to set a function to (re)define those variables here within this package rather than just recalling what is defined in the node_modules package...
 
@@ -41,9 +43,9 @@ app.engine('html', require('ejs').renderFile)
 const router = require('./routes/index')
 app.use('/', router)
 
-app.use(express.static(__dirname + '/public'))
-app.use(express.static(__dirname + '/views'))
-app.use(express.static(__dirname + '/examples'))
+app.use(express.static(path.join(__dirname, '/public')))
+app.use(express.static(path.join(__dirname, '/views')))
+app.use(express.static(path.join(__dirname, '/examples')))
 
 app.use(cors())
 // Currently using cors for all origins just for development but will need to be specific for actual deployment
