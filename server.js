@@ -35,7 +35,7 @@ const server = app.listen(app.get('port'), () => {
 
 /// /BASIC APP ROUTES & SETUP
 const router = require('./routes/index')
-app.use('/')
+app.use('/', router)
 
 app.use(express.static(__dirname + '/public'))
 app.use(express.static(__dirname + '/views'))
