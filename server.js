@@ -33,6 +33,10 @@ const server = app.listen(app.get('port'), () => {
   console.log(`Express is running on PORT ${server.address().port}`)
 })
 
+// set the view engine
+app.set('view engine', 'ejs')
+app.engine('html', require('ejs').renderFile)
+
 /// /BASIC APP ROUTES & SETUP
 const router = require('./routes/index')
 app.use('/', router)
