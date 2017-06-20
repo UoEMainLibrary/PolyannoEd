@@ -27,9 +27,11 @@
     "ejs": "^2.5.6",
     "es6-promisify": "^5.0.0",
     "express": "^4.15.3",
+    "jade-bootstrap": "^1.0.14",
     "mongoose": "^4.10.7",
     "path": "^0.12.7",
-    "polyanno_storage": "^0.1.5"
+    "polyanno_storage": "^0.1.5",
+    "pug": "^2.0.0-rc.2"
   },
   "devDependencies": {
     "babel-core": "^6.25.0",
