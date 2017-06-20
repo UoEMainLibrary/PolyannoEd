@@ -47,6 +47,9 @@ const app = express()
 app.set('views', path.join(__dirname, 'views')) // the folder for template files
 app.set('view engine', 'pug')
 
+// handling routes
+app.use('/', routes)
+
 // serve static file in public folder
 app.use(express.static(path.join(__dirname, 'public')))
 
@@ -91,9 +94,6 @@ app.use((req, res, next) => {
   next()
 })
 
-// handling routes
-app.use('/', routes)
-
 // error handling when route not found
 app.use(errorHandlers.notFound)
 
@@ -116,7 +116,6 @@ mongoose.connection.on('error', (err) => {
 })
 
 // start the app
-const app = require('./app')
 app.set('port', process.env.PORT || 8888)
 const server = app.listen(app.get('port'), () => {
   console.log(`Express is running on PORT ${server.address().port}`)
