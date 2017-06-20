@@ -1,12 +1,109 @@
-var express = require('express')
-var bodyParser = require('body-parser')
-var mongoose = require('mongoose')
-var cookieParser = require('cookie-parser')
-var cors = require('cors')
+// import express library
+const express = require('express')
 
+// import for library used to validate user inputs
+const expressValidator = require('express-validator')
+
+// import path for working with directory and files
 const path = require('path')
-const promisify = require('es6-promisify')
+
+// import body parser for processing requests
+const bodyParser = require('body-parser')
+
+// import for cookie parsing library
+const cookieParser = require('cookie-parser')
+
+// import for session
+const session = require('express-session')
+
+// import for mongo storing session
+const MongoStore = require('connect-mongo')(session)
+
+// import mongoose for interfacing with mongodb
+const mongoose = require('mongoose')
+
+// import library for hanling logins
+const passport = require('passport')
+
+// import for flash informations
 const flash = require('connect-flash')
+
+// import library to promisify callback
+const promisify = require('es6-promisify')
+
+// import routes to be handled
+const routes = require('./routes/index')
+
+// import the helpers file
+const helpers = require('./helpers')
+
+// import the error handlers
+const errorHandlers = require('./handlers/errorHandlers')
+
+// create the Express app
+const app = express()
+
+// view engine setup
+app.set('views', path.join(__dirname, 'views')) // the folder for template files
+app.set('view engine', 'pug')
+
+// serve static file in public folder
+app.use(express.static(path.join(__dirname, 'public')))
+
+// turns raw requests into req.body
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }))
+
+// Validator for validating user inputs
+app.use(expressValidator())
+
+// populate req.cookies from request
+app.use(cookieParser())
+
+// add session mechanism that allow the app to keep the data from visiitors and send flash messages
+app.use(session({
+  secret: process.env.SECRET,
+  key: process.env.KEY,
+  resave: false,
+  saveUninitialized: false,
+  store: new MongoStore({ mongooseConnection: mongoose.connection })
+}))
+
+// Passport.js for handling logins
+app.use(passport.initialize())
+app.use(passport.session())
+
+// Flash middleware for passing message to user requests
+app.use(flash())
+
+// pass variables to templates and requests
+app.use((req, res, next) => {
+  res.locals.h = helpers
+  res.locals.flashes = req.flash()
+  res.locals.user = req.user || null
+  res.locals.currentPath = req.path
+  next()
+})
+
+// promisify callback
+app.use((req, res, next) => {
+  req.login = promisify(req.login, req)
+  next()
+})
+
+// handling routes
+app.use('/', routes)
+
+// error handling when route not found
+app.use(errorHandlers.notFound)
+
+// show error stacktrace if in development environment
+if (app.get('env') === 'development') {
+  app.use(errorHandlers.developmentErrors)
+}
+
+// production error
+app.use(errorHandlers.productionsErrors)
 
 // import environment variables
 require('dotenv').config({ path: 'variables.env' })
@@ -18,74 +115,9 @@ mongoose.connection.on('error', (err) => {
   console.error(`💔💔💔💔💔💔 ➡ ${err.message}`)
 })
 
-// GET APPLICATION RUNNING
-var app = express()
-
 // start the app
+const app = require('./app')
 app.set('port', process.env.PORT || 8888)
 const server = app.listen(app.get('port'), () => {
   console.log(`Express is running on PORT ${server.address().port}`)
 })
-
-// set the view engine
-app.set('view engine', 'pug')
-app.use(express.static(path.join(__dirname, '/views')))
-
-// set the static files
-app.use(express.static(path.join(__dirname, '/public')))
-app.use(express.static(path.join(__dirname, '/examples')))
-
-app.use(cors())
-// Currently using cors for all origins just for development but will need to be specific for actual deployment
-
-// Set bodypaser to process raw requests into req.body
-app.use(bodyParser.urlencoded({ extended: true }))
-app.use(bodyParser.json())
-
-// set the cookie parser
-app.use(cookieParser())
-
-app.use(function (req, res, next) {
-  res.status(404).redirect('/404page.html')
-})
-
-// flash message for application informations
-app.use(flash())
-
-// pass variables to our templates + all requests
-const helpers = require('./helpers')
-app.use((req, res, next) => {
-  res.locals.h = helpers
-  res.locals.flashes = req.flash()
-  res.locals.user = req.user || null
-  res.locals.currentPath = req.path
-  next()
-})
-
-// promisify some callback based APIs
-app.use((req, res, next) => {
-  req.login = promisify(req.login, req)
-  next()
-})
-
-// set the main route
-const router = require('./routes/index')
-app.use('/', router)
-
-// import error handlers
-const errorHandlers = require('./handlers/errorHandlers.js')
-
-// If that above routes didnt work, we 404 them and forward to error handler
-app.use(errorHandlers.notFound)
-
-// One of our error handlers will see if these errors are just validation errors
-app.use(errorHandlers.flashValidationErrors)
-
-// Otherwise this was a really bad error we didn't expect! Shoot eh
-if (app.get('env') === 'development') {
-  /* Development Error Handler - Prints stack trace */
-  app.use(errorHandlers.developmentErrors)
-}
-
-// production error handler
-app.use(errorHandlers.productionErrors)
