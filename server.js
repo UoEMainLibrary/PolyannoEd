@@ -50,7 +50,7 @@ app.use(function (req, res, next) {
   res.status(404).redirect('/404page.html')
 })
 
-// // The flash middleware let's us use req.flash('error', 'Shit!'), which will then pass that message to the next page the user requests
+// flash message for application informations
 app.use(flash())
 
 // pass variables to our templates + all requests
