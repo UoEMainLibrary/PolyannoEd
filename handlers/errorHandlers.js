@@ -41,7 +41,7 @@ exports.developmentErrors = (err, req, res, next) => {
 }
 
 // error handler for production environment, without error stacktraces
-exports.productionsErrors = (err, req, res, next) => {
+exports.productionErrors = (err, req, res, next) => {
   res.status(err.status || 500)
   res.render('error', {
     message: err.message,
