@@ -40,6 +40,9 @@ const helpers = require('./helpers')
 // import the error handlers
 const errorHandlers = require('./handlers/errorHandlers')
 
+// import environment variables
+require('dotenv').config({ path: 'variables.env' })
+
 // create the Express app
 const app = express()
 
@@ -103,10 +106,7 @@ if (app.get('env') === 'development') {
 }
 
 // production error
-app.use(errorHandlers.productionsErrors)
-
-// import environment variables
-require('dotenv').config({ path: 'variables.env' })
+app.use(errorHandlers.productionErrors)
 
 // connect to mongodb and handle bad connection
 mongoose.connect(process.env.DATABASE)
