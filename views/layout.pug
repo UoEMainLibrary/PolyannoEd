@@ -47,11 +47,17 @@ html(lang="en")
     meta(name="viewport",content="width=device-width, initial-scale=1")
     meta(name="description",content="PolyannoEd Website")
     meta(name="author",content="University of Edinburgh Library")
-    link(rel='stylesheet', href='/dist/style.css')
     link(href="/images/uoe.png", rel="shortcut icon" type="image/png")
-    title= title
+    title= (`${title}` === undefined ? `${title}` : `${h.siteName}`)
     block styles
-      link(rel="stylesheet",href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css")
+      link(rel="stylesheet",href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css")
+      link(rel="stylesheet",href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/cyborg/bootstrap.min.css")
+      link(rel='stylesheet', href='https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css')
+      link(rel='stylesheet', type='text/css', href='https://unpkg.com/leaflet@1.0.3/dist/leaflet.css')
+      link(rel='stylesheet', type='text/css', href='https://unpkg.com/leaflet-draw@0.4.9/dist/leaflet.draw.css')
+      link(rel='stylesheet', href='/dist/PolyannoEd.style.css')
+
+
   body(data-spy="scroll",data-target=".scrollspy")
 
     block navigation
@@ -63,7 +69,7 @@ html(lang="en")
               span.icon-bar
               span.icon-bar
               span.icon-bar
-            a.navbar-brand(href='#') Bootswatch theme
+            a.navbar-brand(href='#')= `${h.siteName}`
           #navbar.navbar-collapse.collapse
             ul.nav.navbar-nav
               li.active
@@ -72,23 +78,6 @@ html(lang="en")
                 a(href='#about') About
               li
                 a(href='#contact') Contact
-              li.dropdown
-                a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-expanded='false')
-                  | Dropdown 
-                  span.caret
-                ul.dropdown-menu(role='menu')
-                  li
-                    a(href='#') Action
-                  li
-                    a(href='#') Another action
-                  li
-                    a(href='#') Something else here
-                  li.divider
-                  li.dropdown-header Nav header
-                  li
-                    a(href='#') Separated link
-                  li
-                    a(href='#') One more separated link
 
     block messages
       if locals.flashes
@@ -100,8 +89,16 @@ html(lang="en")
                 +alert-info(message)
 
     block content
-      h1= `${h.siteName}`
+      h1 this is the default
 
     block scripts
-      script(src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js")
-      script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js")
+      script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js')
+      script(src='https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js')
+      script(src='https://unpkg.com/leaflet@1.0.3/dist/leaflet.js')
+      script(src='https://rawgit.com/mejackreed/Leaflet-IIIF/master/leaflet-iiif.js')
+      script(src='https://unpkg.com/leaflet-draw@0.4.9/dist/leaflet.draw.js')
+      script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js")
+      script(src='/javascripts/dragondrop.js')
+      script(src='https://rawgit.com/BluePigeons/alltheunicode/master/alltheunicode.js')
+      script(src='/javascripts/polyanno.js')
+      script(src="/dist/PolyannoEd.bundle.js")
