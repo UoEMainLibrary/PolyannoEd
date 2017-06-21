@@ -1,0 +1,327 @@
+
+#polyanno_map{
+	height: 500px;
+}
+
+.polyanno-resize-s {
+  height: 10px;
+  width: 100%;
+  border-radius: 5px;
+  background-color: buttonface;
+}
+
+
+#polyanno-top-bar {
+	background-color: grey;
+	border-radius: 5px;
+	position: relative;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.popover {
+	z-index: 100000;
+}
+
+
+.dragondrop-handlebar {
+	position: relative;
+	/*z-index: -10000;*/
+}
+.textEditorMainBox {
+	position: relative;
+	z-index: 10000;
+}
+
+
+
+.polyanno-language-buttons {
+	display: none;
+}
+
+.polyanno-other-top-buttons {
+  display: inline-block;
+}
+
+.polyanno-other-button {
+	display: inline-block;
+}
+
+#polyanno-bar-other-buttons {
+	background-color: grey;
+}
+
+.polyanno-add-keyboard {
+	background-color: grey;
+}
+
+.polyannoMinEditor {
+	display: inline-block;
+}
+
+
+.annoPopup {
+  border: 1px solid grey;
+	border-radius: 5px;
+}
+
+.textEditorPopup {
+	background-color: white;
+	z-index: 1000;
+}
+.popupBoxHandlebar {
+  background-color: buttonface;
+  border-radius: 5px 5px 0px 0px;
+}
+
+.polyanno-image {
+  background-color: buttonface;
+  border-radius: 5px;	
+}
+
+
+
+.polyanno-options-row {
+  background-color: grey;
+  padding: 5px;
+  font-size: 0.875em;
+  display: none;
+}
+
+.polyanno-vector-link-row {
+  background-color: #03f;
+  padding: 5px;
+  font-size: 0.9em;
+  display: none;
+}
+
+.polyanno-top-voted {
+  background-color: white;
+  padding: 5px;
+  font-size: 0.9em;
+  display: none;
+}
+
+.polyanno-alternatives-toggle-row {
+  background-color: #EC0028;
+  padding: 5px;
+  font-size: 0.875em;
+  display: none;
+}
+
+.polyanno-add-new-toggle-row {
+  background-color: #03f;
+  padding: 5px;
+  font-size: 0.875em;
+  display: none;
+}
+
+.polyanno-add-new-row {
+  background-color: white;
+  padding: 5px;
+  font-size: 0.875em;
+  display: none;
+}
+
+.polyanno-add-new-cancel-row {
+  background-color: buttonface;
+  padding: 5px;
+  font-size: 0.875em;
+  display: none;
+}
+
+.polyanno-list-alternatives-row {
+  background-color: grey;
+  padding: 5px;
+  font-size: 0.875em;
+  display: none;
+}
+
+.polyanno-metadata-tags-row {
+  background-color: grey;
+  padding: 5px;
+  font-size: 0.875em;
+  display: none;
+}
+
+
+.content-area {
+  	text-align: center;
+  	font-size: 1.2em;
+   white-space: pre-wrap;      /* Webkit */    
+   white-space: -moz-pre-wrap; /* Firefox */     
+   white-space: -pre-wrap;     /* Opera <7 */    
+   white-space: -o-pre-wrap;   /* Opera 7 */     
+   word-wrap: break-word;      /* IE */ 
+}
+
+
+.polyanno-voting-overlay {
+  	position: absolute;
+  	top: 0;
+  	left: 0;
+	background-color: #03f;
+	opacity: 0.8;
+	width: 100%;
+	height: 100%;
+	z-index: 100000;
+	display: none;
+}
+
+.polyannoVotesUpBadge {
+	margin-right: 30%;
+	z-index: 100001;
+}
+.polyannoVotingUpButton {
+	margin-left: 30%;
+	z-index: 100001;
+}
+
+
+.polyannoAddNewContainer {
+	width: 100%;
+}
+
+.polyannoEditorDropdownBtn {
+	width: 100%;
+}
+
+
+.editorTitle {
+	font-size: 1.5em;
+	color: white;
+	text-align: center;
+}
+
+
+
+
+.openTranscriptionChildrenPopup {
+	background-color:yellow;
+	font-weight: normal;
+	color: black;
+}
+
+
+.newAnnotation {
+	width: 100%;
+}
+
+
+.poly-ed-editors-change {
+	width: 100%;
+}
+
+#imageViewer {
+  -webkit-user-select: none;  
+  -moz-user-select: none;    
+  -ms-user-select: none;      
+  user-select: none;
+}
+
+.polyanno-standard-btn {
+	color: black;
+	background-color: white;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.polyanno-building-parents-title {
+
+}
+
+.polyanno-merging-buttons {
+	display: none;
+}
+
+.polyanno_merging_annos {
+  border: 3px dotted yellow;
+  color: black;
+}
+
+.polyanno_merging_annos a {
+  color: black;
+  text-decoration: none;
+}
+
+.polyanno_merging_annos a:hover {
+  color: black;
+  text-decoration: none;
+  cursor: grab;
+}
+
+.polyanno_merging_annos a:active {
+  color: black;
+  text-decoration: none;
+  cursor: grabbing;
+}
+
+.polyanno_merging_annos .ui-resizable-handle {
+  border: 3px dotted yellow;
+}
+
+#polyanno_merging_transcription {
+  overflow-y:scroll;
+  height: 100%;
+  	text-align: center;
+   white-space: pre-wrap;      /* Webkit */    
+   white-space: -moz-pre-wrap; /* Firefox */     
+   white-space: -pre-wrap;     /* Opera <7 */    
+   white-space: -o-pre-wrap;   /* Opera 7 */     
+   word-wrap: break-word;      /* IE */ 
+}
+
+#polyanno_merging_translation {
+  overflow-y:scroll;
+  height: 100%;
+  	text-align: center;
+   white-space: pre-wrap;      /* Webkit */    
+   white-space: -moz-pre-wrap; /* Firefox */     
+   white-space: -pre-wrap;     /* Opera <7 */    
+   white-space: -o-pre-wrap;   /* Opera 7 */     
+   word-wrap: break-word;      /* IE */ 
+}
+
+.ui-effects-wrapper {
+    text-align: center;
+   white-space: pre-wrap;      /* Webkit */    
+   white-space: -moz-pre-wrap; /* Firefox */     
+   white-space: -pre-wrap;     /* Opera <7 */    
+   white-space: -o-pre-wrap;   /* Opera 7 */     
+   word-wrap: break-word;      /* IE */  
+}
+
+.polyanno_outer_merging_cursor {
+  display: none;
+}
+
+#polyanno_merging_cursor {
+  position: absolute; 
+  color: white; 
+  display: block;
+  font-size: 0.9em;
+  z-index: 100000;
+}
+
+.arrow-left {
+  width: 0; 
+  height: 0; 
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent; 
+  border-right:8px solid black; 
+  position: absolute;
+  opacity: 0.5;
+  bottom: 100%;
+  left: 5px;
+}
+
+.polyanno_merging_cursor {
+  left: 13px;
+  bottom: 50%;
+  position: absolute;
+  height: 30px;
+  width: 275px;
+  border-radius: 3px; 
+  text-align: center;
+  background-color: black;
+  opacity: 0.5;
+}
+
