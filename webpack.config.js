@@ -17,6 +17,7 @@ const javascript = {
 
 const styles = {
   test: /\.css$/,
+  include: path.resolve(__dirname, 'public/style'),
   use: ExtractTextPlugin.extract({
     use: 'css-loader'
   })
@@ -30,7 +31,7 @@ const uglify = new webpack.optimize.UglifyJsPlugin({ // eslint-disable-line
 // OK - now it's time to put it all together
 const config = {
   entry: {
-    App: './public/javascripts/PolyannoEd.js'
+    PolyannoEd: './public/javascripts/PolyannoEd.js'
   },
   devtool: 'source-map',
   output: {
@@ -42,7 +43,7 @@ const config = {
     rules: [javascript, styles]
   },
   plugins: [
-    new ExtractTextPlugin('style.css')
+    new ExtractTextPlugin('[name].style.css')
   ]
 }
 
