@@ -5,4 +5,4 @@ const fs = require('fs')
 exports.dump = (obj) => JSON.stringify(obj, null, 2)
 
 // Site name details
-exports.siteName = 'MVC Template'
+exports.siteName = 'PolyannoEd'
