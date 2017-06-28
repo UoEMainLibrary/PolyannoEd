@@ -4,7 +4,10 @@ const Schema = mongoose.Schema
 
 const polyannoObjectSchema = new Schema({
   annotations: String,
-  vectors: String
+  vectors: String,
+  translations: String,
+  transcriptions: String,
+  editors: String
 
 }, {
   toJSON: { virtuals: true },
