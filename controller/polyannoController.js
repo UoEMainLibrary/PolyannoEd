@@ -1,23 +1,18 @@
-const mongoose = require('mongoose')
-const polyannoObject = require('../models/PolyannoObject')
-// const PolyannoObject = polyannoObjectModel.PolyannoObject
+const PolyannoObject = require('../models/PolyannoObject')
 
 exports.saveObjects = async (req, res) => {
-  const objectsRemove = await polyannoObject.find().remove()
-  const objectsSave = await (new polyannoObject(req.body)).save()
-  // res.send(req.body)
+  await PolyannoObject.find().remove()
+
+  const objectsSave = await (new PolyannoObject(req.body)).save()
   res.send(objectsSave)
 }
 
 exports.getObjects = async (req, res) => {
-  const objects = await polyannoObject.find()
-  // console.log(objects)
+  const objects = await PolyannoObject.find()
   res.render('index', {data: objects[0]})
-  // res.render('index')
-  // res.json(objects[0])
 }
 
 exports.draw = async (req, res) => {
-  const objects = await polyannoObject.find()
+  const objects = await PolyannoObject.find()
   res.render('document', {title: 'Document', data: objects})
 }
