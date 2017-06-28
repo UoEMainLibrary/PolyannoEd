@@ -16,12 +16,12 @@ $('#savePolyanno').on('click', function () {
   const vectors = JSON.stringify(Polyanno.vectors.getAll(), recordUndefined)
   const translations = JSON.stringify(Polyanno.translations.getAll(), recordUndefined)
   const transcriptions = JSON.stringify(Polyanno.transcriptions.getAll(), recordUndefined)
-  const editors = JSON.decycle(Polyanno.editors.getAll())
+  const editors = JSON.stringify(JSON.decycle(Polyanno.editors.getAll(), true))
 
   $.post('/save',
          {vectors: vectors, annotations: annotations, translations: translations, transcriptions: transcriptions, editors: editors},
           function (data) {
-            // location.reload()
+            location.reload()
             console.log(data)
           }
     )
