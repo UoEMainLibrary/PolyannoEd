@@ -4,4 +4,57 @@ include mixins/_polyanno
 
 block content
   .container
+    pre= h.dump(data)
+
     +polyanno()
+
+    p
+      button#savePolyanno.btn.btn-lg.btn-default.center(type='button') Save
+
+
+block script
+  script.
+    var v = !{JSON.stringify(data)}
+    var k = JSON.parse(v[0].vectors)
+    
+    function load (vectors) {
+      vectors.forEach(data => {
+        var {coordinates, notFeature: { notGeometry: {notType} }, _id, transcription_fragment, translation_fragment, parent, children, OCD} = data
+
+        var tempGeoJSON = { 'type': 'Feature', 'properties': {}, 'geometry': {} }
+        var oldData = tempGeoJSON
+        oldData.geometry.type = notType
+        oldData.geometry.coordinates = [coordinates]
+        oldData.properties.transcription_fragment = transcription_fragment
+        oldData.properties.translation_fragment = translation_fragment
+        oldData.properties.parent = parent
+        oldData.properties.children = children
+        oldData.properties.OCD = OCD
+
+        L.geoJson(oldData,
+          { style: {
+            color: Polyanno.colours.default.vector
+          },
+            onEachFeature: function (feature, layer) {
+              layer._leaflet_id = _id,
+                allDrawnItems.addLayer(layer),
+                layer.bindPopup(popupVectorMenu)
+            }
+          }).addTo(polyanno_map)
+      })
+
+      let temp = k[0]
+      console.log(temp)
+      Object.setPrototypeOf(temp, Polyanno.vector.prototype)
+      console.log(temp)
+      Polyanno.vectors.add(temp)
+    }
+    $('document').ready(
+      load(k)
+
+      );
+
+
+
+
+    //- load()
