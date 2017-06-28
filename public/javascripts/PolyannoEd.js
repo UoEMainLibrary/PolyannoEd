@@ -14,9 +14,12 @@ $('#savePolyanno').on('click', function () {
 
   const annotations = JSON.stringify(Polyanno.annotations.getAll(), recordUndefined)
   const vectors = JSON.stringify(Polyanno.vectors.getAll(), recordUndefined)
+  const translations = JSON.stringify(Polyanno.translations.getAll(), recordUndefined)
+  const transcriptions = JSON.stringify(Polyanno.transcriptions.getAll(), recordUndefined)
+  const editors = JSON.decycle(Polyanno.editors.getAll())
 
   $.post('/save',
-         {vectors: vectors, annotations: annotations},
+         {vectors: vectors, annotations: annotations, translations: translations, transcriptions: transcriptions, editors: editors},
           function (data) {
             // location.reload()
             console.log(data)
