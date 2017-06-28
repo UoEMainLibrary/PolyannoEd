@@ -14,10 +14,15 @@ block content
 
 block script
   script.
-    var v = !{JSON.stringify(data)}
-    var k = JSON.parse(v[0].vectors)
+    const data = !{JSON.stringify(data)}
+    const vectors = Array.from(JSON.parse(data[0].vectors))
+    const annotations = Array.from(JSON.parse(data[0].annotations))
+    const transcriptions = Array.from(JSON.parse(data[0].transcriptions))
+    const translations = Array.from(JSON.parse(data[0].translations))
+    const editors = Array.from(JSON.parse(data[0].editors))
+    //- const editors = []
     
-    function load (vectors) {
+    function loadToMap (vectors) {
       vectors.forEach(data => {
         var {coordinates, notFeature: { notGeometry: {notType} }, _id, transcription_fragment, translation_fragment, parent, children, OCD} = data
 
@@ -43,18 +48,48 @@ block script
           }).addTo(polyanno_map)
       })
 
-      let temp = k[0]
-      console.log(temp)
-      Object.setPrototypeOf(temp, Polyanno.vector.prototype)
-      console.log(temp)
-      Polyanno.vectors.add(temp)
     }
-    $('document').ready(
-      load(k)
 
-      );
+    function loadToPolyanno (vectors, annotations, transcriptions, translations, editors) {
 
+      console.log(vectors, annotations, transcriptions, translations, editors)
 
+      vectors.forEach( vector => {
+        Object.setPrototypeOf(vector, Polyanno.vector.prototype)
+        console.log(vector)
+        Polyanno.vectors.add(vector)
+      })
 
+      annotations.forEach( annotation => {
+        Object.setPrototypeOf( annotation, Polyanno.annotation.prototype)
+        console.log(annotation)
+        Polyanno.annotations.add(annotation)
+      })
 
-    //- load()
+      transcriptions.forEach( transcription => {
+        Object.setPrototypeOf (transcription, Polyanno.transcription.prototype)
+        console.log(transcription)
+        Polyanno.transcriptions.add(transcription)
+      })
+
+      translations.forEach( translation =>{
+        Object.setPrototypeOf (translation, Polyanno.translation.prototype)
+        console.log(translation)
+        Polyanno.transcriptions.add(translation) 
+      })
+
+      editors.forEach( editor => {
+        Object.setPrototypeOf (editor, Polyanno.editor.prototype)
+        console.log(editor)
+        Polyanno.transcriptions.add(editor)            
+      })
+
+      
+    }
+    
+    function load (vectors, annotations, transcriptions, translations, editors) {
+      loadToMap(vectors)
+      loadToPolyanno(vectors, annotations, transcriptions, translations, editors)
+    }
+
+    $('document').ready( load(vectors, annotations, transcriptions, translations, editors) )
