@@ -1,12 +1,21 @@
 const express = require('express')
 const router = express.Router()
 
-router.get('/', (req, res) => {
-  res.render('layout')
+const polyannoController = require('../controller/polyannoController')
+
+const { catchErrors } = require('../handlers/errorHandlers')
+
+router.get('/', polyannoController.getObjects)
+
+router.get('/document', polyannoController.draw)
+
+router.post('/document', (req, res) => {
+  console.log(req.body)
+  res.send(req.body)
+  // res.render('document', {title: 'Document', data: req.body})
 })
 
-router.get('/document', (req, res) => {
-  res.render('document', {title: 'Document'})
-})
+router.post('/save', polyannoController.saveObjects)
+// router.post('/save', catchErrors(polyannoController.saveObject))
 
 module.exports = router
