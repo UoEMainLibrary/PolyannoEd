@@ -46,7 +46,8 @@
     "mongoose": "^4.10.6",
     "passport": "^0.3.2",
     "path": "^0.12.7",
-    "pug": "^2.0.0-rc.2"
+    "pug": "^2.0.0-rc.2",
+    "universalviewer": "^2.0.2"
   },
   "standard": {
     "globals": [
