@@ -16,3 +16,11 @@ body {
 .theme-showcase .navbar .container {
   width: auto;
 }
+
+.row {
+  height: 100%;
+}
+
+#uvCol {
+  height: 600px;
+}
