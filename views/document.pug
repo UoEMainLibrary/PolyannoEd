@@ -3,16 +3,32 @@ extends layout
 include mixins/_polyanno
 
 block content
-  .container
-    pre= h.dump(data)
+  .container-fluid
 
-    +polyanno()
-
-    p
-      button#savePolyanno.btn.btn-lg.btn-default.center(type='button') Save
+    .row
+      .col-md-6
+        //- pre= h.dump(data)
+        #polyannoDiv
+          +polyanno()
+        p
+          button#savePolyanno.btn.btn-lg.btn-default.center(type='button') Save
+      .col-md-6#uvCol
+        .uv(
+          data-locale='en-GB:English (GB),cy-GB:Cymraeg', 
+          data-config= '/config/uv-config.json',
+          data-uri='http://images.is.ed.ac.uk/luna/servlet/iiif/m/UoEsha~4~4~65346~164252/manifest', 
+          data-sequenceindex='0', 
+          data-canvasindex='0', 
+          data-zoom='-0.3778,0,1.7556,1.3791', 
+          data-rotation='0', 
+          style='display:block; width:100%; height:100%; background-color: #fff'
+          )
+        script#embedUV(type='text/javascript', src='/lib/embed.js')
 
 
 block script
+  //- script#tes(type='text/javascript', src='/javascripts/tes.js')
+
   script.
     const data = !{JSON.stringify(data)}
     const vectors = Array.from(JSON.parse(data[0].vectors))
@@ -52,35 +68,35 @@ block script
 
     function loadToPolyanno (vectors, annotations, transcriptions, translations, editors) {
 
-      console.log(vectors, annotations, transcriptions, translations, editors)
+      //- console.log(vectors, annotations, transcriptions, translations, editors)
 
       vectors.forEach( vector => {
         Object.setPrototypeOf(vector, Polyanno.vector.prototype)
-        console.log(vector)
+        //- console.log(vector)
         Polyanno.vectors.add(vector)
       })
 
       annotations.forEach( annotation => {
         Object.setPrototypeOf( annotation, Polyanno.annotation.prototype)
-        console.log(annotation)
+        //- console.log(annotation)
         Polyanno.annotations.add(annotation)
       })
 
       transcriptions.forEach( transcription => {
         Object.setPrototypeOf (transcription, Polyanno.transcription.prototype)
-        console.log(transcription)
+        //- console.log(transcription)
         Polyanno.transcriptions.add(transcription)
       })
 
       translations.forEach( translation =>{
         Object.setPrototypeOf (translation, Polyanno.translation.prototype)
-        console.log(translation)
+        //- console.log(translation)
         Polyanno.transcriptions.add(translation) 
       })
 
       editors.forEach( editor => {
         Object.setPrototypeOf (editor, Polyanno.editor.prototype)
-        console.log(editor)
+        //- console.log(editor)
         Polyanno.transcriptions.add(editor)            
       })
 
@@ -93,3 +109,26 @@ block script
     }
 
     $('document').ready( load(vectors, annotations, transcriptions, translations, editors) )
+
+
+  script.
+    $(document).bind('seadragonExtension.onCurrentViewUri', function (event, obj) {
+      let uri = obj.fullUri
+      uri = uri.split('/').slice(0, -4)
+      uri.push('info.json')
+      uri = uri.join('/')
+
+      imageSelected = uri
+
+      const html = 
+      `<div class="row" id="polyanno-top-bar"><\/div>
+      <div class="row" id="polyanno-page-body"><\/div>
+      <script src="/javascripts/dragondrop.js"><\/script>
+      <script src="/javascripts/alltheunicode.js"><\/script>
+      <script src="/javascripts/polyanno.js"><\/script>
+      <script src="/dist/PolyannoEd.bundle.js"><\/script>`
+       
+      console.log(html)
+      $('#polyannoDiv').html(html)
+
+    })
