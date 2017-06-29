@@ -53,6 +53,9 @@ app.set('view engine', 'pug')
 // serve static file in public folder
 app.use(express.static(path.join(__dirname, 'public')))
 
+// server universalviewer as static files
+app.use(express.static(path.join(__dirname, 'node_modules/universalviewer/dist/uv-2.0.2')))
+
 // turns raw requests into req.body
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
