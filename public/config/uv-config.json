@@ -1,0 +1,12 @@
+{
+  "modules": {
+    "pagingHeaderPanel": {
+      "options": {
+        "localeToggleEnabled": false,
+        "pageModeEnabled": true,
+        "pagingToggleEnabled": true
+      }
+
+    }
+  }
+}
