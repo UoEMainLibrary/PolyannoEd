@@ -16,6 +16,5 @@ router.post('/document', (req, res) => {
 })
 
 router.post('/save', polyannoController.saveObjects)
-// router.post('/save', catchErrors(polyannoController.saveObject))
 
 module.exports = router
