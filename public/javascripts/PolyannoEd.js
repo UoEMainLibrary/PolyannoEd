@@ -26,5 +26,3 @@ $('#savePolyanno').on('click', function () {
           }
     )
 })
-
-module.exports = load
