@@ -3,6 +3,7 @@ mongoose.Promise = global.Promise
 const Schema = mongoose.Schema
 
 const polyannoObjectSchema = new Schema({
+  imageId: String,
   annotations: String,
   vectors: String,
   translations: String,
