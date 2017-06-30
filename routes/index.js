@@ -8,12 +8,7 @@ const { catchErrors } = require('../handlers/errorHandlers')
 router.get('/', polyannoController.getObjects)
 
 router.get('/document', polyannoController.draw)
-
-router.post('/document', (req, res) => {
-  console.log(req.body)
-  res.send(req.body)
-  // res.render('document', {title: 'Document', data: req.body})
-})
+router.get('/document/:imageId', polyannoController.getObjects)
 
 router.post('/save', polyannoController.saveObjects)
 
