@@ -15,6 +15,14 @@ const javascript = {
   }]
 }
 
+const polyannoSetup = {
+  test: /\.(js)$/,
+  include: [path.resolve(__dirname, 'javascripts', 'modules')],
+  use: [{
+    loader: 'script-loader'
+  }]
+}
+
 const styles = {
   test: /\.css$/,
   include: path.resolve(__dirname, 'public/style'),
@@ -40,11 +48,16 @@ const config = {
   },
 
   module: {
-    rules: [javascript, styles]
+    rules: [javascript, polyannoSetup, styles]
   },
   plugins: [
     new ExtractTextPlugin('[name].style.css')
-  ]
+  ],
+  resolve: {
+    alias: {
+      utils: path.resolve(__dirname, 'javascripts', 'modules', 'utils.js')
+    }
+  }
 }
 
 process.noDeprecation = true
