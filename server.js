@@ -79,6 +79,47 @@ app.use(session({
 app.use(passport.initialize())
 app.use(passport.session())
 
+const User = require('./models/User')
+passport.use(User.createStrategy())
+
+const FacebookStrategy = require('passport-facebook').Strategy
+
+const fbSettings = {
+  // clientID: process.env.FB_APP_ID,
+  // clientSecret: process.env.FB_APP_SECRET,
+  clientID: '1422122864547554',
+  clientSecret: '605c6ad1437cb9b66c428d68cbf50f75',
+  callbackURL: 'http://localhost:7777/login/facebook/callback'
+}
+
+const fbCallback = function (accessToken, refreshToken, profile, cb) {
+  console.log(profile)
+  // console.log(accessToken, refreshToken, profile, cb)
+  // User.findOrCreate({ email: profile.email, name: profile.name, facebookId: profile.id }, function (err, user) {
+  //   return cb(err, user)
+  // })
+}
+passport.use(new FacebookStrategy(fbSettings, fbCallback))
+
+app.route('/login/facebook').get(passport.authenticate('facebook'))
+// app.route('/login/facebook/callback').get(passport.authenticate('facebook', function (err, user, info) {
+//   console.log(err, user, info)
+//   // console.log('testing')
+// }))
+
+passport.serializeUser(User.serializeUser())
+passport.deserializeUser(User.deserializeUser())
+
+// passport.serializeUser(function (user, done) {
+//   done(null, user.id)
+// })
+
+// passport.deserializeUser(function (id, done) {
+//   User.findById(id, function (err, user) {
+//     done(err, user)
+//   })
+// })
+
 // Flash middleware for passing message to user requests
 app.use(flash())
 
