@@ -1,0 +1,7 @@
+mixin loginForm()
+  form.form-signin(role='form', action='/login', method='post')
+    h2.form-signin-heading Please sign in
+    label.sr-only(for='inputEmail')
+    input.form-control(type='email', name='email', id='inputEmail', placeholder='Email', required, autofocus)
+    input.form-control(type='password', name='password', id='inputPassword', placeholder='Password')
+    button.btn.btn-lg.btn-default.btn-block(type='submit') LOGIN

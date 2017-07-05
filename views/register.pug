@@ -1,0 +1,10 @@
+extends layout
+
+include mixins/_registerForm
+
+block content
+  .container
+    +registerForm()
+    
+block script
+  script#login(type='text/javascript', src='/javascripts/modules/login.js')
