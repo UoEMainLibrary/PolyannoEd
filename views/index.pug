@@ -5,3 +5,8 @@ include mixins/_polyanno
 block content
   .container
     pre= h.dump(data)
+
+    if(user)
+      h1= `Hello ${user.name}`
+    else
+      h1 PolyannoEd
