@@ -9,12 +9,12 @@ const UserSchema = new Schema({
     unique: true,
     lowercase: true,
     trim: true,
-    validate: [validator.isEmail, 'Invalid Email Address']
-    // required: 'Please Supply an email address'
+    validate: [validator.isEmail, 'Invalid Email Address'],
+    required: 'Please Supply an email address'
   },
   name: {
     type: String,
-    // required: 'Please supply a name',
+    required: 'Please supply a name',
     trim: true
   },
   facebookId: String
