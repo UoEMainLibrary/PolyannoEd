@@ -79,68 +79,63 @@ app.use(session({
 app.use(passport.initialize())
 app.use(passport.session())
 
-const User = require('./models/User')
-passport.use(User.createStrategy())
+const setPassport = require('./config/passport-config')
 
-const FacebookStrategy = require('passport-facebook').Strategy
+setPassport(passport)
 
-const fbSettings = {
-  clientID: process.env.FB_APP_ID,
-  clientSecret: process.env.FB_APP_SECRET,
-  // clientID: '1422122864547554',
-  // clientSecret: '605c6ad1437cb9b66c428d68cbf50f75',
-  callbackURL: 'http://localhost:7777/auth/facebook/callback',
-  scope: ['email'],
-  profileFields:
-['id', 'email', 'gender', 'link', 'locale', 'name', 'timezone', 'updated_time', 'verified'],
-  enableProof: true,
-  passReqToCallback: true
-}
+// const User = require('./models/User')
+// passport.use(User.createStrategy())
 
-const fbCallback = async (req, accessToken, refreshToken, profile, done) => {
-  console.log(`profile id ${profile.id}`)
-  console.log(profile)
+// const FacebookStrategy = require('passport-facebook').Strategy
 
-  User.findOne({ 'facebookId': profile.id }, function (err, user) {
-                // if there is an error, stop everything and return that
-                // ie an error connecting to the database
-    if (err) { return done(err) }
+// const fbSettings = {
+//   clientID: process.env.FB_APP_ID,
+//   clientSecret: process.env.FB_APP_SECRET,
+//   // clientID: '1422122864547554',
+//   // clientSecret: '605c6ad1437cb9b66c428d68cbf50f75',
+//   callbackURL: 'http://localhost:7777/auth/facebook/callback',
+//   scope: ['email'],
+//   profileFields:
+// ['id', 'email', 'gender', 'link', 'locale', 'name', 'timezone', 'updated_time', 'verified'],
+//   enableProof: true,
+//   passReqToCallback: true
+// }
 
-                // if the user is found, then log them in
-    if (user) {
-      return done(null, user) // user found, return that user
-    } else {
-                    // if there is no user found with that facebook id, create them
-      const newUser = new User()
+// const fbCallback = async (req, accessToken, refreshToken, profile, done) => {
+//   console.log(`profile id ${profile.id}`)
+//   console.log(profile)
 
-                    // set all of the facebook information in our user model
-      newUser.facebookId = profile.id // set the users facebook id
-      // newUser.facebook.token = token // we will save the token that facebook provides to the user
-      newUser.name = profile.name.givenName + ' ' + profile.name.familyName // look at the passport user profile to see how names are returned
-      newUser.email = profile.emails[0].value // facebook can return multiple emails so we'll take the first
+//   User.findOne({ 'facebookId': profile.id }, function (err, user) {
+//     if (err) { return done(err) }
 
-                    // save our user to the database
-      newUser.save(function (err) {
-        if (err) { throw err }
+//     if (user) {
+//       return done(null, user) // user found, return that user
+//     } else {
+//       const newUser = new User()
 
-                        // if successful, return the new user
-        return done(null, newUser)
-      })
-    }
-  })
-}
+//       newUser.facebookId = profile.id // set the users facebook id
+//       newUser.name = profile.name.givenName + ' ' + profile.name.familyName // look at the passport user profile to see how names are returned
+//       newUser.email = profile.emails[0].value // facebook can return multiple emails so we'll take the first
 
-passport.use(new FacebookStrategy(fbSettings, fbCallback))
+//       newUser.save(function (err) {
+//         if (err) { throw err }
+//         return done(null, newUser)
+//       })
+//     }
+//   })
+// }
 
-passport.serializeUser(function (user, done) {
-  done(null, user.id)
-})
+// passport.use(new FacebookStrategy(fbSettings, fbCallback))
 
-passport.deserializeUser(function (id, done) {
-  User.findById(id, function (err, user) {
-    done(err, user)
-  })
-})
+// passport.serializeUser(function (user, done) {
+//   done(null, user.id)
+// })
+
+// passport.deserializeUser(function (id, done) {
+//   User.findById(id, function (err, user) {
+//     done(err, user)
+//   })
+// })
 
 // Flash middleware for passing message to user requests
 app.use(flash())
