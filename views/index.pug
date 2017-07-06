@@ -4,9 +4,16 @@ include mixins/_polyanno
 
 block content
   .container
-    pre= h.dump(data)
+    //- pre= h.dump(data)
 
-    if(user)
-      h1= `Hello ${user.name}`
-    else
-      h1 PolyannoEd
+    .row
+      .col-md-6
+        - const id1 = 'UoEsha~4~4~64742~103064'
+        +panel-default(`${id1}`)
+          a(href=`/document/manifest/${id1}`)
+            img.img-thumbnail(src=`http://images.is.ed.ac.uk/luna/servlet/iiif/${id1}page0/full/!1024,1024/0/default.jpg`)
+      .col-md-6
+        - const id = 'UoEsha~4~4~65346~164252'
+        +panel-default(`${id}`)
+          a(href=`/document/manifest/${id}`)
+            img.img-thumbnail(src=`http://images.is.ed.ac.uk/luna/servlet/iiif/${id}page0/full/!1024,1024/0/default.jpg`)

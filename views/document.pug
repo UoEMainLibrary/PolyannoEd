@@ -13,10 +13,11 @@ block content
         p
           button#savePolyanno.btn.btn-lg.btn-default.center(type='button') Save
       .col-md-6#uvCol
+        - const id = identifier ? identifier : 'UoEsha~4~4~65346~164252'
         .uv(
           data-locale='en-GB:English (GB),cy-GB:Cymraeg', 
           data-config= '/config/uv-config.json',
-          data-uri='http://images.is.ed.ac.uk/luna/servlet/iiif/m/UoEsha~4~4~65346~164252/manifest', 
+          data-uri=`http://images.is.ed.ac.uk/luna/servlet/iiif/m/${id}/manifest`, 
           data-sequenceindex='0', 
           data-canvasindex='0', 
           data-zoom='-0.3778,0,1.7556,1.3791', 
@@ -28,3 +29,4 @@ block content
 
 block script
   script#utils(type='text/javascript', src='/javascripts/utils.js')
+          //- data-uri='http://images.is.ed.ac.uk/luna/servlet/iiif/m/UoEsha~4~4~65346~164252/manifest', 

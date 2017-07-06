@@ -25,5 +25,5 @@ exports.getObjects = async (req, res, next) => {
 
 exports.draw = async (req, res, next) => {
   const objects = await PolyannoObject.find()
-  res.render('document', {title: 'Document', polyannoData: objects})
+  res.render('document', {title: 'Document', polyannoData: objects, identifier: req.params.identifier})
 }

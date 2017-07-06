@@ -7,12 +7,13 @@ var authController = require('../controller/authController')
 
 // const { catchErrors } = require('../handlers/errorHandlers')
 
+router.get('/', authController.home)
+
 router.get('/document', polyannoController.draw)
+router.get('/document/manifest/:identifier', polyannoController.draw)
 router.get('/document/:imageId', polyannoController.getObjects)
 
 router.post('/save', polyannoController.saveObjects)
-
-router.get('/', authController.home)
 
 router.get('/register', authController.registerForm)
 

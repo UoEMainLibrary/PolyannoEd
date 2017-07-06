@@ -24,3 +24,12 @@ body {
 #uvCol {
   height: 600px;
 }
+
+.img-thumbnail {
+  max-height: 400px;
+  width: auto;
+}
+
+.panel-default {
+  text-align: center;
+}
