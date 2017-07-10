@@ -86,21 +86,41 @@ $(document).bind('seadragonExtension.onCurrentViewUri', function (event, obj) {
   uri.push('info.json')
   uri = uri.join('/')
 
-  imageSelected = uri
-
-  console.log(imageSelected)
-
   const html =
   `<div class="row" id="polyanno-top-bar"><\/div>
   <div class="row" id="polyanno-page-body"><\/div>
-  <script src="/javascripts/modules/dragondrop.js"><\/script>
-  <script src="/javascripts/modules/alltheunicode.js"><\/script>
-  <script src="/javascripts/modules/polyanno.js"><\/script>
-  <script src="/javascripts/modules/PolyannoSetup.js"><\/script>
-  <script src="/dist/PolyannoEd.bundle.js"><\/script>`
-
-  //  console.log(html)
+  
+  `
   $('#polyannoDiv').html(html)
+
+  const jsFiles = ['dragondrop', 'alltheunicode', 'polyanno']
+
+  jsFiles.forEach(jsFile => {
+    $.getScript(`/javascripts/modules/${jsFile}.js`)
+      .done(function (script, textStatus) {
+        console.log(textStatus)
+      })
+      .fail(function (jqxhr, settings, exception) {
+        $('div.log').text('Triggered ajaxError handler.')
+      })
+  })
+
+  imageSelected = uri
+
+  // console.log(imageSelected)
+
+  // const theImage = getTargetJSON(imageSelected)
+  // imageSelectedFormats = theImage.formats
+  // imageSelectedMetadata = theImage.metadata
+
+  // console.log(theImage)
+
+  polyanno_setup({
+    'highlighting': true,
+    'minimising': true,
+    'voting': true
+  })
+
   load()
 })
 
@@ -122,10 +142,7 @@ $('#savePolyanno').on('click', function () {
   $.post('/save',
          {imageId: imageId, vectors: vectors, annotations: annotations, translations: translations, transcriptions: transcriptions, editors: editors},
           function (data) {
-            // location.reload()
             console.log(data)
           }
     )
 })
-
-$('document').ready(load())
