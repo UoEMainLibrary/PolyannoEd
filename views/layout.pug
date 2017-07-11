@@ -49,13 +49,26 @@ html(lang="en")
     meta(name="author",content="University of Edinburgh Library")
     link(href="/images/uoe.png", rel="shortcut icon" type="image/png")
     title= (`${title}` === undefined ? `${title}` : `${h.siteName}`)
+
     block styles
-      link(rel="stylesheet",href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css")
-      link(rel="stylesheet",href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/cyborg/bootstrap.min.css")
-      link(rel='stylesheet', href='https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css')
+      //- Dependencies style imports
+      link(rel="stylesheet", type='text/css', href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css")
+      link(rel="stylesheet", type='text/css', href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/cyborg/bootstrap.min.css")
+      link(rel='stylesheet', type='text/css', href='https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css')
       link(rel='stylesheet', type='text/css', href='https://unpkg.com/leaflet@1.0.3/dist/leaflet.css')
       link(rel='stylesheet', type='text/css', href='https://unpkg.com/leaflet-draw@0.4.9/dist/leaflet.draw.css')
-      link(rel='stylesheet', href='/dist/PolyannoEd.style.css')
+      link(rel='stylesheet', type='text/css', href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css')
+
+      //- Polyanno CSS styles imports
+      link(rel='stylesheet', type='text/css', href='/style/dragondrop.css')
+      link(rel='stylesheet', type='text/css', href='/style/alltheunicode.css')
+      link(rel='stylesheet', type='text/css', href='/style/polyanno.css')
+      link(rel='stylesheet', type='text/css', href='/style/PolyannoEd.css')
+
+      //- Social button plugin imports and dependency
+      link(rel='stylesheet', type='text/css', href='/style/bootstrap-social.css')
+
+      
 
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js')
     script(src='https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js')
@@ -114,11 +127,7 @@ html(lang="en")
       h1 this is the default
 
 
-    //- script(src='/javascripts/dragondrop.js')
-    //- script(src='/javascripts/alltheunicode.js')
-    //- script(src='/javascripts/polyanno.js')
-    //- script(src="/javascripts/cycle.js")
-    script(src="/dist/PolyannoEd.bundle.js")
+    //- script(src="/dist/PolyannoEd.bundle.js")
     
 
     block script
