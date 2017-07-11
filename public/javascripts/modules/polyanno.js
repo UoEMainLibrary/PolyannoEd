@@ -1,5 +1,67 @@
+//// AJAX related functions to save Polyanno data 
 
-////
+// var findNewTextData = function (thisEditor) {
+  
+//   var newText = thisEditor.DOM.find(".newAnnotation").val();
+//   // var newText = $(editorString).find('.newAnnotation').val()
+//   polyanno_text_selected = newText /// /////
+//   var textData = {text: newText, metadata: imageSelectedMetadata, target: []} /// /
+
+//   if (textData.target[0] != 'undefined') {
+//     return textData
+//   };
+// }
+
+// var findBaseURL = function (type) {
+//   if (type === 'transcription') { return Polyanno.urls.transcription } else if (type === 'translation') { return Polyanno.urls.translation };
+// }
+
+// var addAnnotation = function (thisEditor) {
+  
+//   var editorString = '#' + thisEditor
+//   var createdText
+//   var createdAnno
+//   var theData = findNewTextData(thisEditor)
+//   console.log('data found is ' + JSON.stringify(theData))
+
+//   $.ajax({
+//     type: 'POST',
+//     url: findBaseURL(thisEditor.type),
+//     async: false,
+//     data: theData,
+//     success:
+//       function (data) {
+//         createdText = data.url
+//       },
+//           error: function(xhr, textStatus, errorThrown){
+//        console.log('request failed');
+//     }
+//   })
+
+//   var annoData = {
+//     'body': {
+//       'id': createdText
+//     },
+//     'target': theData.target
+//   }
+
+//   console.log('the anno to be added is ' + JSON.stringify(annoData))
+
+//   $.ajax({
+//     type: 'POST',
+//     url: Polyanno.urls.annotation,
+//     async: false,
+//     data: annoData,
+//     success:
+//       function (data) {
+//         createdAnno = data.url
+//       },
+//           error: function(xhr, textStatus, errorThrown){
+//        console.log('request failed');
+//     }
+//   })
+
+// }
 
 /////GLOBAL VARIABLES
 
@@ -4270,10 +4332,12 @@ var polyanno_setup_editor_events = function() {
   });
 
   $('#polyanno-page-body').on("click", '.addAnnotationSubmit', function(event) {
+    
     var thisEditorID = $(event.target).closest(".annoPopup").attr("id"); 
     var thisEditor = Polyanno.editors.getById(thisEditorID);
     thisEditor.setSelected();
     polyanno_new_anno_via_text_box(thisEditor);
+    // addAnnotation(thisEditor)
   });
 
   $('#polyanno-page-body').on("click", ".closePopoverMenuBtn", function(){
