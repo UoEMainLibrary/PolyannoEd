@@ -17,7 +17,9 @@ const UserSchema = new Schema({
     required: 'Please supply a name',
     trim: true
   },
-  facebookId: String
+  facebookId: String,
+  twitterId: String,
+  Authority: String
 })
 
 UserSchema.plugin(passportLocalMongoose, { usernameField: 'email' })
