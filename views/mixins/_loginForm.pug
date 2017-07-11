@@ -1,7 +1,18 @@
 mixin loginForm()
-  form.form-signin(role='form', action='/login', method='post')
-    h2.form-signin-heading Please sign in
-    label.sr-only(for='inputEmail')
-    input.form-control(type='email', name='email', id='inputEmail', placeholder='Email', required, autofocus)
-    input.form-control(type='password', name='password', id='inputPassword', placeholder='Password')
-    button.btn.btn-lg.btn-default.btn-block(type='submit') LOGIN
+  .row
+    .center-register
+      .col-md-12
+        form.form-signin(role='form', action='/login', method='post')
+          label.sr-only(for='inputEmail')
+          input.form-control(type='email', name='email', id='inputEmail', placeholder='Email', required, autofocus)
+          input.form-control(type='password', name='password', id='inputPassword', placeholder='Password')
+          button.btn.btn-lg.btn-default.btn-block(type='submit') Login
+  .row
+    .center-register
+      .col-md-12
+        a.btn.btn-login.btn-social.btn-facebook(href='/login/facebook') 
+          span.fa.fa-facebook
+          p Login with Facebook
+        a.btn.btn-login.btn-social.btn-twitter(href='/login/twitter') 
+          span.fa.fa-twitter
+          p Login with Twitter 

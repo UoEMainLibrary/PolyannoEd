@@ -33,3 +33,21 @@ body {
 .panel-default {
   text-align: center;
 }
+
+.center-register {
+  text-align: center;
+  margin: 5% auto;
+  width: 80%;
+}
+
+.form-signin {
+  float: none; margin: 0 auto;
+}
+
+.btn-social {
+  margin: 5% 5%;
+}
+
+.form-control{
+  margin: 2% auto;
+}

@@ -1,14 +1,20 @@
 mixin registerForm()
-  form.form-signin(role='form', action="/register",method="post", style='max-width: 300px;')
-    h2.form-signin-heading Sign Up here
-    input.form-control(type='text', name="email", placeholder='Your email')
-    input.form-control(type='text', name="name", placeholder='Your Name')
-    input.form-control(type='password', name="password", placeholder='Your Password')
-    button.btn.btn-lg.btn-default.btn-block(type='submit') Sign Up
+  .row  
+    .center-register
+      .col-md-12
+        form.form-signin(role='form', action="/register",method="post")
+          label.sr-only(for='inputEmail') Email address
+          input.form-control(type='text', name="email", placeholder='Your email')
+          input.form-control(type='text', name="name", placeholder='Your Name')
+          input.form-control(type='password', name="password", placeholder='Your Password')
+          button.btn.btn-lg.btn-default.btn-block(type='submit') Register
 
-  //- fb:login-button(scope='public_profile,email', onlogin='checkLoginState();')
-  a(href='/login/facebook') Log In with Facebook
-
-
-
-
+  .row
+    .center-register
+      .col-md-12
+        a.btn.btn-social.btn-facebook(href='/login/facebook') 
+          span.fa.fa-facebook
+          p Register with Facebook
+        a.btn.btn-social.btn-twitter(href='/login/twitter') 
+          span.fa.fa-twitter
+          p Register with Twitter  
