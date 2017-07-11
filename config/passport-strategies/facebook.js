@@ -7,8 +7,6 @@ const FacebookStrategy = require('passport-facebook').Strategy
 const fbSettings = {
   clientID: process.env.FB_APP_ID,
   clientSecret: process.env.FB_APP_SECRET,
-  // clientID: '1422122864547554',
-  // clientSecret: '605c6ad1437cb9b66c428d68cbf50f75',
   callbackURL: 'http://localhost:7777/auth/facebook/callback',
   scope: ['email'],
   profileFields:
@@ -18,9 +16,6 @@ const fbSettings = {
 }
 
 const fbCallback = async (req, accessToken, refreshToken, profile, done) => {
-  // console.log(`profile id ${profile.id}`)
-  // console.log(profile)
-
   User.findOne({ 'facebookId': profile.id }, function (err, user) {
     if (err) { return done(err) }
 
