@@ -18,16 +18,21 @@ const twitterCallback = async (req, accessToken, refreshToken, profile, done) =>
     if (err) { return done(err) }
 
     if (user) {
-      const updatedUser = await User.findOneAndUpdate({ 'email': userEmail }, profile, {
-        new: true, // return the new store instead of the old one
-        runValidators: true
-      }).exec()
-      console.log(updatedUser)
-      return done(null, user) // user found, return that user
+      user.twitterId = profile.id
+      user.name = profile.displayName
+      user.email = profile.emails[0].value
+
+      console.log('=========UpdatedUser============')
+      console.log(user)
+
+      user.save(function (err) {
+        if (err) { throw err }
+        return done(null, user)
+      })
     } else {
       const newUser = new User()
 
-      newUser.twitter = profile.id // set the users facebook id
+      newUser.twitterId = profile.id // set the users facebook id
       newUser.name = profile.displayName // look at the passport user profile to see how names are returned
       newUser.email = profile.emails[0].value // facebook can return multiple emails so we'll take the first
 
