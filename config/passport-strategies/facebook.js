@@ -41,6 +41,7 @@ const fbCallback = async (req, accessToken, refreshToken, profile, done) => {
       newUser.facebookId = profile.id // set the users facebook id
       newUser.name = profile.displayName // look at the passport user profile to see how names are returned
       newUser.email = profile.emails[0].value // facebook can return multiple emails so we'll take the first
+      newUser.authority = 'user'
 
       console.log('=========new user============')
       console.log(newUser)
