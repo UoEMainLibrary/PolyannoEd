@@ -1,4 +1,4 @@
-const localStratey = require('./passport-strategies/local')
+const localStrategy = require('./passport-strategies/local')
 const facebookStrategy = require('./passport-strategies/facebook')
 const twitterStrategy = require('./passport-strategies/twitter')
 
@@ -6,7 +6,7 @@ const mongoose = require('mongoose')
 const User = mongoose.model('User')
 
 const setPassport = (passport) => {
-  passport.use(localStratey)
+  passport.use(localStrategy)
 
   passport.use(facebookStrategy)
 
