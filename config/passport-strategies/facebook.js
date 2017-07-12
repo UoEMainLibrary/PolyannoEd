@@ -6,7 +6,7 @@ const FacebookStrategy = require('passport-facebook').Strategy
 const fbSettings = {
   clientID: process.env.FB_APP_ID,
   clientSecret: process.env.FB_APP_SECRET,
-  callbackURL: 'http://localhost:7777/auth/facebook/callback',
+  callbackURL: process.env.FB_CALLBACK_URL,
   scope: ['email'],
   enableProof: true,
   passReqToCallback: true

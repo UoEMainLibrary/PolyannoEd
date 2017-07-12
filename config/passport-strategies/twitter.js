@@ -6,7 +6,7 @@ const TwitterStrategy = require('passport-twitter').Strategy
 const twitterSettings = {
   consumerKey: process.env.TWITTER_CONSUMER_KEY,
   consumerSecret: process.env.TWITTER_CONSUMER_SECRET,
-  callbackURL: 'http://localhost:7777/auth/twitter/callback',
+  callbackURL: process.env.TWITTER_CALLBACK_URL,
   includeEmail: true,
   // userProfileURL: 'https://api.twitter.com/1.1/account/verify_credentials.json?include_email=true',
   passReqToCallback: true
