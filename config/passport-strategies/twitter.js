@@ -8,7 +8,6 @@ const twitterSettings = {
   consumerSecret: process.env.TWITTER_CONSUMER_SECRET,
   callbackURL: process.env.TWITTER_CALLBACK_URL,
   includeEmail: true,
-  // userProfileURL: 'https://api.twitter.com/1.1/account/verify_credentials.json?include_email=true',
   passReqToCallback: true
 }
 
@@ -19,7 +18,7 @@ const twitterCallback = async (req, accessToken, refreshToken, profile, done) =>
     if (err) { return done(err) }
 
     if (user) {
-      const updatedUser = await User.findOneAndUpdate({ 'email': userEmail}, profile, {
+      const updatedUser = await User.findOneAndUpdate({ 'email': userEmail }, profile, {
         new: true, // return the new store instead of the old one
         runValidators: true
       }).exec()
