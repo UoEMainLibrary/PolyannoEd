@@ -20,7 +20,7 @@ const UserSchema = new Schema({
   },
   facebookId: String,
   twitterId: String,
-  Authority: String
+  authority: String
 })
 
 UserSchema.plugin(passportLocalMongoose, { usernameField: 'email' })
