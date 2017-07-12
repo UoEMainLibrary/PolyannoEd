@@ -1,4 +1,3 @@
-// const User = require('.../models/User')
 const mongoose = require('mongoose')
 const User = mongoose.model('User')
 
@@ -9,8 +8,6 @@ const fbSettings = {
   clientSecret: process.env.FB_APP_SECRET,
   callbackURL: 'http://localhost:7777/auth/facebook/callback',
   scope: ['email'],
-  profileFields:
-['id', 'email', 'gender', 'link', 'locale', 'name', 'timezone', 'updated_time', 'verified'],
   enableProof: true,
   passReqToCallback: true
 }

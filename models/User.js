@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+mongoose.Promoise = global.Promise
 const Schema = mongoose.Schema
 const passportLocalMongoose = require('passport-local-mongoose')
 const validator = require('validator')

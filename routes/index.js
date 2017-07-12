@@ -22,15 +22,23 @@ router.post('/register',
   authController.login
 )
 
+// local authentication (username and password)
 router.get('/login', authController.loginForm)
-
 router.post('/login', authController.login)
 
-router.get('/logout', authController.logout)
-
-router.get('/auth/facebook/callback/', authController.facebookCallback, (req, res) => {
-  res.render('index')
-})
+// facebook authentication
 router.get('/login/facebook', authController.facebook)
+router.get('/auth/facebook/callback/',
+            authController.facebookCallback,
+            authController.home)
+
+// twitter authentication
+router.get('/login/twitter', authController.twitter)
+router.get('/auth/twitter/callback/',
+            authController.twitterCallback,
+            authController.home)
+
+// logout from all authentication
+router.get('/logout', authController.logout)
 
 module.exports = router
