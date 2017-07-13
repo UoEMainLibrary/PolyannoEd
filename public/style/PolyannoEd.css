@@ -51,3 +51,7 @@ body {
 .form-control{
   margin: 2% auto;
 }
+
+.btn-block {
+  margin: 10px;
+}
