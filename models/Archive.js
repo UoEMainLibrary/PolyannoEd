@@ -4,6 +4,7 @@ const Schema = mongoose.Schema
 
 const ArchiveSchema = new Schema({
   title: String,
+  identifier: String,
   url: String,
   author: {
     type: mongoose.Schema.ObjectId,

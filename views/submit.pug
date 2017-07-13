@@ -7,6 +7,7 @@ block content
         h1 Archive submission form
         form.form-signin(role='form', action="/submit/archive",method="post")
           +input('text', 'archive-title', 'Archive Title', 'Please input the archive title', 'title')
+          +input('text', 'archive-identifier', 'Archive Identifier', 'Please input the archive identifier', 'identifier')
           +input('text', 'archive-url', 'Archive URL', 'Please input the link for the archive', 'url')
           button.btn.btn-lg.btn-default.btn-block(type='submit') Submit
     
