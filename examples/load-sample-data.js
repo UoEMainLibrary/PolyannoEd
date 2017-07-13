@@ -6,11 +6,11 @@ mongoose.connect(process.env.DATABASE)
 mongoose.Promise = global.Promise // Tell Mongoose to use ES6 promises
 
 // import all of our models - they need to be imported only once
-const Archive = require('../models/Archive')
 const User = require('../models/User')
+const Archive = require('../models/Archive')
 
-const archives = JSON.parse(fs.readFileSync(__dirname + '/archive.json', 'utf-8'))
 const users = JSON.parse(fs.readFileSync(__dirname + '/users.json', 'utf-8'))
+const archives = JSON.parse(fs.readFileSync(__dirname + '/archives.json', 'utf-8'))
 
 async function deleteData () {
   console.log('😢😢 Goodbye Data...')
@@ -22,8 +22,8 @@ async function deleteData () {
 
 async function loadData () {
   try {
-    await Archive.insertMany(archives)
     await User.insertMany(users)
+    await Archive.insertMany(archives)
     console.log('👍👍👍👍👍👍👍👍 Done!')
     process.exit()
   } catch (e) {

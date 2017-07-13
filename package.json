@@ -6,7 +6,9 @@
   "scripts": {
     "watch": "nodemon ./server.js --ignore public/",
     "assets": "webpack -w --display-max-modules 0",
-    "start": "concurrently \"npm run watch\" \"npm run assets\" --names \"💻,📦\" --prefix name"
+    "start": "concurrently \"npm run watch\" \"npm run assets\" --names \"💻,📦\" --prefix name",
+    "sample": "node ./examples/load-sample-data.js",
+    "delete-sample": "node ./examples/load-sample-data.js --delete"
   },
   "author": "Erin Nolan, Indra Lukmana",
   "license": "MIT",
