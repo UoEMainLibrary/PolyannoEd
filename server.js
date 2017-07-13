@@ -34,6 +34,8 @@ const promisify = require('es6-promisify')
 // import routes to be handled
 const mainRoutes = require('./routes/main')
 const submissionRoutes = require('./routes/submission')
+const archiveRoutes = require('./routes/archive')
+const authenticationRoutes = require('./routes/authentication')
 
 // import the helpers file
 const helpers = require('./helpers')
@@ -108,9 +110,14 @@ app.use((req, res, next) => {
 // handling routes
 app.use('/', mainRoutes)
 app.use('/submit', submissionRoutes)
+app.use('/archive', archiveRoutes)
+app.use('/login', authenticationRoutes)
 
 // error handling when route not found
 app.use(errorHandlers.notFound)
+
+// check if it is validations errors
+app.use(errorHandlers.flashValidationErrors)
 
 // show error stacktrace if in development environment
 if (app.get('env') === 'development') {
