@@ -4,5 +4,20 @@ include mixins/_registerForm
 
 block content
   .container
-    +registerForm()
-    
+    .row  
+      .center-register
+        .col-md-12
+          form.form-signin(role='form', action="/register",method="post")
+            +input('text', 'email-input', 'Email', 'Email address', 'email')
+            +input('text', 'name-input', 'Name', 'Full Name', 'name')
+            +input('password', 'password-input', 'Password', 'Password', 'password')
+            button.btn.btn-lg.btn-default.btn-block(type='submit') Register
+    .row
+      .center-register
+        .col-md-12
+          a.btn.btn-social.btn-facebook(href='/login/facebook') 
+            span.fa.fa-facebook
+            p Register with Facebook
+          a.btn.btn-social.btn-twitter(href='/login/twitter') 
+            span.fa.fa-twitter
+            p Register with Twitter      
