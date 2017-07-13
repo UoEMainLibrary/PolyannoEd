@@ -16,7 +16,7 @@ exports.notFound = (req, res, next) => {
 exports.flashValidationErrors = (err, req, res, next) => {
   if (!err.errors) return next(err)
   const errorKeys = Object.keys(err.errors)
-  errorKeys.forEach(key => req.flash('error', err.errors[key].message))
+  errorKeys.forEach(key => req.flash('danger', err.errors[key].message))
   res.redirect('back')
 }
 
@@ -34,7 +34,7 @@ exports.developmentErrors = (err, req, res, next) => {
 
   res.format({
     'text/html': () => {
-      res.render('error', errorDetails)
+      res.render('danger', errorDetails)
     },
     'application/json': () => res.json(errorDetails)
   })
@@ -43,7 +43,7 @@ exports.developmentErrors = (err, req, res, next) => {
 // error handler for production environment, without error stacktraces
 exports.productionErrors = (err, req, res, next) => {
   res.status(err.status || 500)
-  res.render('error', {
+  res.render('danger', {
     message: err.message,
     error: {}
   })
