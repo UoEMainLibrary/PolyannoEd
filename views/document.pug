@@ -9,7 +9,11 @@ block content
         #polyannoDiv
           +polyanno()
         p
-          button#savePolyanno.btn.btn-lg.btn-default.center(type='button') Save
+          if (user)
+            button#savePolyanno.btn.btn-lg.btn-default.btn-block(type='button') Save
+          if (!user)
+            a.btn.btn-lg.btn-default.btn-block(href='/login/') Login to save data
+
       .col-md-6#uvCol
         - const id = identifier ? identifier : 'Archive'
         .uv(
