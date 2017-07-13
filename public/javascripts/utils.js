@@ -61,7 +61,7 @@ function loadToPolyanno (vectors, annotations, transcriptions, translations, edi
 
 const load = function () {
   const imageId = idExtractor(imageSelected)
-  $.get(`/document/${imageId}`, function (data) {
+  $.get(`/archive/${imageId}`, function (data) {
     console.log(data)
     if ((typeof data) !== 'string') {
     // const data = JSON.stringify(object)
