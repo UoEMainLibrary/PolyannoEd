@@ -53,7 +53,7 @@ html(lang="en")
     block styles
       //- Dependencies style imports
       link(rel="stylesheet", type='text/css', href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css")
-      link(rel="stylesheet", type='text/css', href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/cyborg/bootstrap.min.css")
+      link(rel="stylesheet", type='text/css', href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/flatly/bootstrap.min.css")
       link(rel='stylesheet', type='text/css', href='https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css')
       link(rel='stylesheet', type='text/css', href='https://unpkg.com/leaflet@1.0.3/dist/leaflet.css')
       link(rel='stylesheet', type='text/css', href='https://unpkg.com/leaflet-draw@0.4.9/dist/leaflet.draw.css')
@@ -68,7 +68,7 @@ html(lang="en")
       //- Social button plugin imports and dependency
       link(rel='stylesheet', type='text/css', href='/style/bootstrap-social.css')
 
-      
+
 
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js')
     script(src='https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js')
@@ -96,9 +96,9 @@ html(lang="en")
               li.active
                 a(href='/') Home
               li
-                a(href='#about') About
+                a(href='/about') About
               li
-                a(href='#contact') Contact
+                a(href='/contact') Contact
             ul.nav.navbar-nav.navbar-right
               if (!user)
                 li
@@ -107,18 +107,21 @@ html(lang="en")
                   a(href='/register') Register
               if (user)
                 li
-                  a Welcome #{user.name}
+                  a(href='/submit/archive') Submit Archive
+                li
+                  a(href='/profile') #{user.name}
                 li
                   a(href='/logout') Logout
 
     block messages
       if locals.flashes
-        .inner
+        .container
           .flash-messages
             - const categories = Object.keys(locals.flashes)
             each category in categories
               each message in flashes[category]
-                +alert-info(message)
+                - const type = (category === 'error') ? 'danger' : category
+                +alert-x(type, message)
 
     if(error)
       p= h.dump(error)
