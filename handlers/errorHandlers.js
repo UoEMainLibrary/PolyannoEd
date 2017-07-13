@@ -34,7 +34,7 @@ exports.developmentErrors = (err, req, res, next) => {
 
   res.format({
     'text/html': () => {
-      res.render('danger', errorDetails)
+      res.render('error', errorDetails)
     },
     'application/json': () => res.json(errorDetails)
   })
@@ -43,8 +43,8 @@ exports.developmentErrors = (err, req, res, next) => {
 // error handler for production environment, without error stacktraces
 exports.productionErrors = (err, req, res, next) => {
   res.status(err.status || 500)
-  res.render('danger', {
-    message: err.message,
-    error: {}
+  res.render('error', {
+    status: err.status,
+    message: err.message
   })
 }
