@@ -34,7 +34,7 @@ exports.facebookCallback = passport.authenticate('facebook', {
   failureRedirect: '/login',
   failureFlash: 'Failed Login!',
   successRedirect: '/',
-  successFlash: 'You are now logged in!'
+  successFlash: 'You are now logged in using Facebook!'
 })
 
 // twitter middlewares
@@ -43,7 +43,7 @@ exports.twitterCallback = passport.authenticate('twitter', {
   failureRedirect: '/login',
   failureFlash: 'Failed Login!',
   successRedirect: '/',
-  successFlash: 'You are now logged in!'
+  successFlash: 'You are now logged in using Twitter!'
 })
 
 // logout
