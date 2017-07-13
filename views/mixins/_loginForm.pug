@@ -3,9 +3,8 @@ mixin loginForm()
     .center-register
       .col-md-12
         form.form-signin(role='form', action='/login', method='post')
-          label.sr-only(for='inputEmail')
-          input.form-control(type='email', name='email', id='inputEmail', placeholder='Email', required, autofocus)
-          input.form-control(type='password', name='password', id='inputPassword', placeholder='Password')
+          +input('text', 'email-input', 'Email', 'Email address', 'email')
+          +input('password', 'password-input', 'Password', 'Password', 'password')
           button.btn.btn-lg.btn-default.btn-block(type='submit') Login
   .row
     .center-register

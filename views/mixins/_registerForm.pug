@@ -3,12 +3,10 @@ mixin registerForm()
     .center-register
       .col-md-12
         form.form-signin(role='form', action="/register",method="post")
-          label.sr-only(for='inputEmail') Email address
-          input.form-control(type='text', name="email", placeholder='Your email')
-          input.form-control(type='text', name="name", placeholder='Your Name')
-          input.form-control(type='password', name="password", placeholder='Your Password')
+          +input('text', 'email-input', 'Email', 'Email address', 'email')
+          +input('text', 'name-input', 'Name', 'Full Name', 'name')
+          +input('password', 'password-input', 'Password', 'Password', 'password')
           button.btn.btn-lg.btn-default.btn-block(type='submit') Register
-
   .row
     .center-register
       .col-md-12
