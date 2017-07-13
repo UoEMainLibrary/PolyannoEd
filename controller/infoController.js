@@ -1,11 +1,11 @@
-exports.contact = (res, req) => {
+exports.contact = (req, res) => {
   res.render('contact')
 }
 
-exports.about = (res, req) => {
+exports.about = (req, res) => {
   res.render('about')
 }
 
-exports.toc = (res, req) => {
+exports.toc = (req, res) => {
   res.render('toc')
 }
