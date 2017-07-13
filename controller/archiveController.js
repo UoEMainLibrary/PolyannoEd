@@ -11,8 +11,7 @@ exports.addArchive = async (req, res, next) => {
   await newArchive.save()
 
   req.flash('success', 'You have added an archive')
-
-  next()
+  res.redirect('/')
 }
 
 exports.getArchives = async (req, res) => {
