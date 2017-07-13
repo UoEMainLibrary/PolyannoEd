@@ -3,7 +3,7 @@ const router = express.Router()
 
 const polyannoController = require('../controller/polyannoController')
 
-var authController = require('../controller/authController')
+const authController = require('../controller/authController')
 
 // const { catchErrors } = require('../handlers/errorHandlers')
 
@@ -13,7 +13,7 @@ router.get('/document', polyannoController.draw)
 router.get('/document/manifest/:identifier', polyannoController.draw)
 router.get('/document/:imageId', polyannoController.getObjects)
 
-router.post('/save', polyannoController.saveObjects)
+router.post('/save', authController.isLoggedIn, polyannoController.saveObjects)
 
 router.get('/register', authController.registerForm)
 
