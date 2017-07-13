@@ -14,6 +14,10 @@ exports.loginForm = (req, res) => {
   res.render('login')
 }
 
+exports.profile = (req, res) => {
+  res.render('profile', {user: req.user})
+}
+
 // local middlewares
 exports.register = async (req, res, next) => {
   const user = new User({ email: req.body.email, name: req.body.name })

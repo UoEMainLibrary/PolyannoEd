@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  .container
+    h1= `Hi ${user.name}`
+
+    h1= `Email ${user.email}`
+
+    - if (user.facebookId)
+      h1= `Facebook Id ${user.facebookId}`
+ 
+    - if (user.twitterId)
+      h1= `Twitter Id ${user.twitterId}`
