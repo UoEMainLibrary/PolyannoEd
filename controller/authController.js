@@ -47,8 +47,19 @@ exports.twitterCallback = passport.authenticate('twitter', {
 })
 
 // logout
-exports.logout = function (req, res) {
+exports.logout = (req, res) => {
   req.logout()
   req.flash('success', ' You are logged out')
   res.redirect('/')
+}
+
+// check if the user logged in
+exports.isLoggedIn = (req, res, next) => {
+  if (req.isAuthenticated()) {
+    next()
+    return
+  }
+
+  req.flash('danger', 'You need to login first')
+  res.redirect('/login')
 }
