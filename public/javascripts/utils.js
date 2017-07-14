@@ -91,7 +91,7 @@ $(document).bind('seadragonExtension.onCurrentViewUri', function (event, obj) {
   <script src="/javascripts/modules/dragondrop.js"><\/script>
   <script src="/javascripts/modules/alltheunicode.js"><\/script>
   <script src="/javascripts/modules/polyanno.js"><\/script>
-  <script src="/dist/PolyannoEd.bundle.js"><\/script>`
+ `
 
   $('#polyannoDiv').html(html)
 
