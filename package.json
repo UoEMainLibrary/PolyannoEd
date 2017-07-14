@@ -5,8 +5,7 @@
   "main": "server.js",
   "scripts": {
     "watch": "nodemon ./server.js --ignore public/",
-    "assets": "webpack -w --display-max-modules 0",
-    "start": "concurrently \"npm run watch\" \"npm run assets\" --names \"💻,📦\" --prefix name",
+    "start": "concurrently \"npm run watch\" --names \"💻\" --prefix name",
     "sample": "node ./examples/load-sample-data.js",
     "delete-sample": "node ./examples/load-sample-data.js --delete"
   },
@@ -18,21 +17,11 @@
     "url": "https://github.com/UoEMainLibrary/PolyannoEd.git"
   },
   "devDependencies": {
-    "babel-cli": "^6.24.1",
-    "babel-core": "^6.25.0",
-    "babel-loader": "^7.1.0",
-    "babel-preset-env": "^1.5.2",
-    "babel-preset-es2015": "^6.24.1",
     "concurrently": "^3.4.0",
-    "css-loader": "^0.28.4",
     "eslint-plugin-html": "^3.0.0",
-    "extract-text-webpack-plugin": "^2.1.2",
-    "node-sass": "^4.5.3",
     "nodemon": "^1.11.0",
     "pug-lint": "^2.4.0",
-    "script-loader": "^0.7.0",
-    "standard": "^10.0.2",
-    "webpack": "^3.0.0"
+    "standard": "^10.0.2"
   },
   "dependencies": {
     "body-parser": "^1.17.2",
