@@ -15,7 +15,7 @@ Install the following application on your computer locally or on your server
 ## Clone the application
 
 ```Bash
-Git clone https://github.com/UoEMainLibrary/PolyannoEd.git
+git clone https://github.com/UoEMainLibrary/PolyannoEd.git
 ```
 
 ## Setting the environment variables
