@@ -14,13 +14,21 @@ Install the following application on your computer locally or on your server
 
 ## Clone the application
 
+To get the recent version of the web app clone the project using the following command.
+
 ```Bash
 git clone https://github.com/UoEMainLibrary/PolyannoEd.git
 ```
 
+Inside the downloaded folder run this following command to install the dependencies for the project.
+
+```Bash
+npm install
+```
+
 ## Setting the environment variables
 
-The project use `variables.env` file to setup basic setting that will be used on the whole application. The basic setting example is as follow
+The project use `variables.env` file to setup basic setting that will be used on the whole application. Inside the project there is `variables.env.example` file that follow the basic setting, you can rename the file to `variables.env` and then configure it. The basic setting of the example file is as follow
 
 ```ini
 NODE_ENV=development
@@ -38,7 +46,7 @@ TWITTER_CONSUMER_SECRET=xxxxx
 TWITTER_CALLBACK_URL=http://localhost:7777/login/twitter/callback
 ```
 
-If you change any of this setting restart the application to see the effect of the changes.
+If you change any of this setting restart the application to see the effect of the changes. The settings definitions are as follows
 
 - NODE_ENV
 
