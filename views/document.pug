@@ -13,7 +13,7 @@ block content
           script(src='/javascripts/modules/polyanno.js')
           script(src='/javascripts/modules/PolyannoSetup.js')
           script(src="/dist/PolyannoEd.bundle.js")
-     
+
         if (user)
           button#savePolyanno.btn.btn-lg.btn-default.btn-block(type='button') Save
         if (!user)
@@ -30,9 +30,24 @@ block content
           data-zoom='-0.3778,0,1.7556,1.3791', 
           data-rotation='0', 
           style='display:block; width:100%; height:100%; background-color: #fff'
-          )
+        )
         script#embedUV(type='text/javascript', src='/lib/embed.js')
+
+        .container-fluid.text-center
+          a.twitter-share-button#twitterButton(
+            href='https://twitter.com/share', 
+            data-size='large', 
+            data-text='Check this archive', 
+            data-url='https://dev.twitter.com/web/tweet-button', 
+            data-hashtags='Polyanno, EdinburghLibrary', 
+            data-via='PolyannoEd', 
+            data-related='twitterapi,twitter')
+            | Tweet this archive
+
+
+
 
 
 block script
-  script#utils(type='text/javascript', src='/javascripts/utils.js')
+  script(type='text/javascript', src='/javascripts/utils.js')
+  script(type='text/javascript', src='/javascripts/modules/twitterAsync.js')
