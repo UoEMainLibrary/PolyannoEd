@@ -27,7 +27,7 @@ async function loadData () {
     console.log('👍👍👍👍👍👍👍👍 Done!')
     process.exit()
   } catch (e) {
-    console.log('\n👎👎👎👎👎👎👎👎 Error! The Error info is below but if you are importing sample data make sure to drop the existing database first with.\n\n\t npm run blowitallaway\n\n\n')
+    console.log('\n👎👎👎👎👎👎👎👎 Error! The Error info is below but if you are importing sample data make sure to drop the existing database first with.\n\n\t npm run delete-sample\n\n\n')
     console.log(e)
     process.exit()
   }
