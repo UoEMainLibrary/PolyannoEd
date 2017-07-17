@@ -1,16 +1,20 @@
-# Installation
+# Overview
+
+The application is using MongoDB, NodeJS, and Express as its main building blocks. The overall commands and settings that need to be run is explained as follows.
+
+## Installation
 
 Install the following application on your computer locally or on your server
 
-1. Node JS
+1.  Node JS
 
-   Make sure to install at least version 7.6, check with `node -v`
+    Make sure to install at least _version 7.6_ check with `node -v`
 
-1. NPM
+2.  NPM
 
-   Make sure to install at least version 5, check with `npm -v`
+    Make sure to install at least _version 5_ check with `npm -v`
 
-1. MongoDB
+3.  MongoDB
 
 ## Clone the application
 
@@ -48,47 +52,47 @@ TWITTER_CALLBACK_URL=http://localhost:7777/login/twitter/callback
 
 If you change any of this setting restart the application to see the effect of the changes. The settings definitions are as follows
 
-- NODE_ENV
+-   NODE_ENV
 
-    To enable development mode for the application change the **NODE_ENV** to **development** in environment.env. This will allow for a complete error stack traces on the application when the web crash.
+      To enable development mode for the application change the **NODE_ENV** to **development** in environment.env. This will allow for a complete error stack traces on the application when the web crash.
 
     ```Bash
     NODE_ENV=development
     ```
 
-    To disable development mode for the application change the **NODE_ENV** to **production** in environment.env. This will turn off the error stack traces so that general user do not have access to the web stack traces error.
+      To disable development mode for the application change the **NODE_ENV** to **production** in environment.env. This will turn off the error stack traces so that general user do not have access to the web stack traces error.
 
     ```Bash
     NODE_ENV=production
     ```
 
-- DATABASE
+-   DATABASE
 
-    This setting will point to the MongoDB. Change the address `127.0.0.1` and port `27017` according to the running mongodb process, this is the default address and port. The `PolyannoEd` is the database that the application will use to store its data.
+      This setting will point to the MongoDB. Change the address `127.0.0.1` and port `27017` according to the running mongodb process, this is the default address and port. The `PolyannoEd` is the database that the application will use to store its data.
 
-- PORT
+-   PORT
 
-    Set this to any desired port that allowed in the server
+      Set this to any desired port that allowed in the server
 
-- SECRET and KEY
+-   SECRET and KEY
 
-    This are variables to define the session for user. You can choose any word that you want.
+      This are variables to define the session for user. You can choose any word that you want.
 
-- FB_APP_ID and FB_APP_SECRET
+-   FB_APP_ID and FB_APP_SECRET
 
-    This are application number that you can get from the application instance in <https://developers.facebook.com/>
+      This are application number that you can get from the application instance in <https://developers.facebook.com/>
 
-- FB_CALLBACK_URL
+-   FB_CALLBACK_URL
 
-    Set this with the URL which the application will be hosted. **[IMPORTANT] also add this URL in the Facebook Login application**
+      Set this with the URL which the application will be hosted. **[IMPORTANT] also add this URL in the Facebook Login application**
 
-- TWITTER_CONSUMER_KEY and TWITTER_CONSUMER_SECRET
+-   TWITTER_CONSUMER_KEY and TWITTER_CONSUMER_SECRET
 
-    This are application number that you can get from the application instance in <https://apps.twitter.com/>
+      This are application number that you can get from the application instance in <https://apps.twitter.com/>
 
-- TWITTER_CALLBACK_URL
+-   TWITTER_CALLBACK_URL
 
-    Set this with the URL which the application will be hosted. **[IMPORTANT] also add this URL in the Twitter application**
+      Set this with the URL which the application will be hosted. **[IMPORTANT] also add this URL in the Twitter application**
 
 ## Start the MongoDB
 
@@ -134,30 +138,30 @@ To run the web application use the following command
 npm start
 ```
 
-## Run using *forever*
+## Run using _forever_
 
-In Production server it is a best practice to use a process manager such as *forever* <https://www.npmjs.com/package/forever>. To use this manager we need to install it in global scope.
+In Production server it is a best practice to use a process manager such as _forever_ <https://www.npmjs.com/package/forever>. To use this manager we need to install it in global scope.
 
 ```Bash
 npm install forever -g
 ```
 
-After the *forever* application installed run the web app using this command
+After the _forever_ application installed run the web app using this command
 
 ```Bash
 forever start server.js
 ```
 
-To see running application on *forever* use
+To see running application on _forever_ use
 
 ```Bash
 forever listall
 ```
 
-To stop all of the running application on *forever* use
+To stop all of the running application on _forever_ use
 
 ```Bash
 forever stopall
 ```
 
-Refer to the *forever* documentation for more complete usage <https://www.npmjs.com/package/forever>.
+Refer to the _forever_ documentation for more complete usage <https://www.npmjs.com/package/forever>.
