@@ -155,7 +155,7 @@ forever start server.js
 To see running application on _forever_ use
 
 ```Bash
-forever listall
+forever list
 ```
 
 To stop all of the running application on _forever_ use
