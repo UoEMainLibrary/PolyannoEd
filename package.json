@@ -33,6 +33,7 @@
     "express": "^4.15.3",
     "express-session": "^1.15.3",
     "express-validator": "^3.2.0",
+    "healthcheck-middleware": "^1.0.1",
     "jade-bootstrap": "^1.0.14",
     "mongodb": "^2.2.28",
     "mongoose": "^4.10.6",

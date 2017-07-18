@@ -5,7 +5,9 @@ const authController = require('../controller/authController')
 const archiveController = require('../controller/archiveController')
 const infoController = require('../controller/infoController')
 
-const { catchErrors } = require('../handlers/errorHandlers')
+const {
+  catchErrors
+} = require('../handlers/errorHandlers')
 
 router.get('/', catchErrors(archiveController.getArchives))
 
@@ -18,6 +20,8 @@ router.post('/register',
 router.get('/profile', authController.isLoggedIn, authController.profile)
 
 router.get('/contact', infoController.contact)
+
+router.get('/healthcheck', infoController.healthcheck)
 
 // logout from all authentication
 router.get('/logout', authController.logout)
