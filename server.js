@@ -44,7 +44,9 @@ const helpers = require('./helpers')
 const errorHandlers = require('./handlers/errorHandlers')
 
 // import environment variables
-require('dotenv').config({ path: 'variables.env' })
+require('dotenv').config({
+  path: 'variables.env'
+})
 
 // create the Express app
 const app = express()
@@ -61,7 +63,9 @@ app.use(express.static(path.join(__dirname, 'node_modules/universalviewer/dist/u
 
 // turns raw requests into req.body
 app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.urlencoded({
+  extended: true
+}))
 
 // Validator for validating user inputs
 app.use(expressValidator())
